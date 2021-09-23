@@ -26,9 +26,8 @@ def current_uncertainity(current):
         return 0.01
 
 #  model function
-def compute_current(voltage, resistance):
-    """compute the current value for given voltage and resistance"""
-    return voltage / resistance
+def linear_model_function(x, a, b):
+    return a*x + b 
 
 # filename
 filename = "100k.csv"
@@ -47,7 +46,7 @@ voltage_errors = np.ones_like(measured_voltages) * voltage_uncertainity
 current_errors = np.vectorize(current_uncertainity)(measured_currents)
 
 # do the curve fitting
-popt, pcov = optim.curve_fit(compute_current, 
+popt, pcov = optim.curve_fit(linear_model_function, 
                              measured_voltages, 
                              measured_currents, 
                              absolute_sigma=True, 
@@ -71,7 +70,7 @@ plt.errorbar(measured_voltages,
 # add 0 to the measured data set
 measured_voltages_with_0 = np.append(measured_voltages, 0)
 plt.plot(measured_voltages_with_0, 
-         compute_current(measured_voltages_with_0, popt[0]),
+         linear_model_function(measured_voltages_with_0, popt[0], popt[1]),
          label='$I = V/R$ (fitted linear curve)')
 
 # legend and title
@@ -82,10 +81,10 @@ plt.legend(loc="upper left")
 plt.savefig("lab_1_ex_1_plot.png")
 
 chi2r = chi2reduced(measured_currents,
-                    compute_current(measured_voltages, popt[0]),
+                    linear_model_function(measured_voltages, popt[0], popt[1]),
                     current_errors,
                     1)
 
 print("model chi2r = %.3f" % chi2r) 
-print("fitted (average) resistance = %.3f kiloohm" % popt[0])
-print("error in fitted resistance = %.3f kiloohm" % np.sqrt(pvar[0]))
+print("fitted (average) resistance = %.3f kiloohm" % (1/popt[0]))
+print("error in fitted resistance = %.5f kiloohm" % np.sqrt(pvar[0]))
