@@ -68,8 +68,10 @@ plt.errorbar(measured_voltages,
              ls="")
 
 # plot the fitted curve
-plt.plot(measured_voltages, 
-         compute_current(measured_voltages, popt[0]),
+# add 0 to the measured data set
+measured_voltages_with_0 = np.append(measured_voltages, 0)
+plt.plot(measured_voltages_with_0, 
+         compute_current(measured_voltages_with_0, popt[0]),
          label='$I = V/R$ (fitted linear curve)')
 
 # legend and title
