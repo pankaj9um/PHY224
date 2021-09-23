@@ -51,6 +51,8 @@ popt, pcov = optim.curve_fit(linear_model_function,
                              measured_currents, 
                              absolute_sigma=True, 
                              sigma=current_errors)
+
+print("linear fit model gives a=%.2f, b=%.2f" % (popt[0], popt[1]))
 pvar = np.diag(pcov)
 
 # new figure for this file
@@ -85,6 +87,6 @@ chi2r = chi2reduced(measured_currents,
                     current_errors,
                     1)
 
-print("model chi2r = %.3f" % chi2r) 
 print("fitted (average) resistance = %.3f kiloohm" % (1/popt[0]))
 print("error in fitted resistance = %.5f kiloohm" % np.sqrt(pvar[0]))
+print("model chi2r = %.3f" % chi2r) 
