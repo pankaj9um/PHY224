@@ -3,11 +3,13 @@ import scipy.optimize as optim
 import matplotlib.pyplot as plt
 
 def chi2(y_measure,y_predict,errors):
-    """Calculate the chi squared value given a measurement with errors and prediction"""
+    """Calculate the chi squared value given a measurement with errors and 
+    prediction"""
     return np.sum( np.power(y_measure - y_predict, 2) / np.power(errors, 2) )
 
 def chi2reduced(y_measure, y_predict, errors, number_of_parameters):
-    """Calculate the reduced chi squared value given a measurement with errors and prediction,
+    """Calculate the reduced chi squared value given a measurement with errors
+    and prediction,
     and knowing the number of parameters in the model."""
     return chi2(y_measure, y_predict, errors)/(y_measure.size - number_of_parameters)
 
@@ -23,6 +25,7 @@ def current_uncertainity(current):
     else:
         return 0.01
 
+#  model function
 def compute_current(voltage, resistance):
     """compute the current value for given voltage and resistance"""
     return voltage / resistance
