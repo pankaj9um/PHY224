@@ -56,7 +56,7 @@ pvar = np.diag(pcov)
 
 # new figure for this file
 plt.figure(figsize=(16, 10))
-plt.style.use("default")
+plt.style.use("seaborn-whitegrid")
         
 # plot the error bar chart
 plt.errorbar(measured_voltages,
