@@ -76,7 +76,7 @@ def analyse_file(filename, title):
     plt.xlabel("Voltage (V)")
     plt.ylabel("Current (mA)")
     plt.legend(loc="upper left")
-    plt.savefig("lab_1_ex_1_plot_%s.png" % filename[:-4])
+    plt.savefig("lab_1_ex_1_plot_%s.png" % filename[:-4].lower())
 
     chi2r = chi2reduced(measured_currents,
                         linear_model_function(measured_voltages, 
@@ -91,7 +91,7 @@ def analyse_file(filename, title):
     print("\terror in fitted resistance = %.5f kiloohm" % np.sqrt(pvar[0]))
     print("\tmodel chi2r = %.3f" % chi2r)
 
-# filename
+# files to analyse
 file_titles ={
     "100k.csv": "100 kiloohm",
     "Potentiometer.csv": "potentiometer"
