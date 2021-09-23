@@ -9,8 +9,7 @@ def chi2(y_measure,y_predict,errors):
 
 def chi2reduced(y_measure, y_predict, errors, number_of_parameters):
     """Calculate the reduced chi squared value given a measurement with errors
-    and prediction,
-    and knowing the number of parameters in the model."""
+    and prediction, and knowing the number of parameters in the model."""
     return chi2(y_measure, y_predict, errors)/(y_measure.size - number_of_parameters)
 
 # we have constant voltage uncertainity which is 0.1 V
@@ -85,7 +84,7 @@ plt.savefig("lab_1_ex_1_plot.png")
 chi2r = chi2reduced(measured_currents,
                     linear_model_function(measured_voltages, popt[0], popt[1]),
                     current_errors,
-                    1)
+                    2)
 
 print("fitted (average) resistance = %.3f kiloohm" % (1/popt[0]))
 print("error in fitted resistance = %.5f kiloohm" % np.sqrt(pvar[0]))
