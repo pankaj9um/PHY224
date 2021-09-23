@@ -69,7 +69,7 @@ def analyse_file(filename, title):
     measured_voltages_with_0 = np.append(measured_voltages, 0)
     plt.plot(measured_voltages_with_0, 
             linear_model_function(measured_voltages_with_0, popt[0], popt[1]),
-            label='$I = V/R$ (fitted linear curve)')
+            label='$f(x) = ax + b$ (fitted linear curve)')
 
     # legend and title
     plt.title("Current vs Voltage (Resistor = %s)" % title)
