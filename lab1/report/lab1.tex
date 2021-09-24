@@ -4,7 +4,7 @@
 \usepackage{tabularx} % extra features for tabular environment
 \usepackage{amsmath}  % improve math presentation
 \usepackage{graphicx} % takes care of graphic including machinery
-\usepackage[margin=1in,letterpaper]{geometry} % decreases margins
+\usepackage[margin=0.75in,letterpaper]{geometry} % decreases margins
 \usepackage{cite} % takes care of citations
 \usepackage[final]{hyperref} % adds hyper links inside the generated pdf file
 \usepackage{listings}
@@ -29,10 +29,36 @@
 
 \subsection{Introduction}
 
+In this exercise, we fit the experimental data to a linear function.  
+
+\subsection{Methods}
+
+We followed the method descibed in the lab manual to setup the circuit. Following steps were 
+performed,
+
+\begin{enumerate}
+  \item Connect the ameter, voltmeter, and power supply to the resistor. The setup of the circuit is shown (Figure 1).
+  \item Vary the voltage on the power supply.
+  \item Record the voltage and current from the multimeters, along with uncertainty.
+  \item Change the voltage, and record the new values. This step was repeated to record more data  points.
+  \item Observations were recorded in csv files, separate file for 100 kiloohm and Potentiometer.
+  \item After performing all the above measurements, disconnected the power, and switch the voltmeter to resistance. The resistance value was noted for reference.
+\end{enumerate}
+
+\begin{center}
+  \includegraphics[width=1.0\linewidth]{../lab_1_ex_1_setup.png}    
+\end{center}
+Folowing observations were made for the instruments,
+
+\begin{enumerate}
+  \item One of the multimeter was faulty, and we discarded the readings takes from that multimeter.
+  \item We accidently changed the potentiometer value, so we had to repeat the set of observations for it.
+\end{enumerate}
+
 \csvautotabular{../100k.csv}
 \linebreak
 \csvautotabular{../Potentiometer.csv}
-\subsection{Methods}
+
 \subsection{Results}
 \subsection{Analysis \& Discussion }
 

@@ -12,17 +12,24 @@ def chi2reduced(y_measure, y_predict, errors, number_of_parameters):
     and prediction, and knowing the number of parameters in the model."""
     return chi2(y_measure, y_predict, errors)/(y_measure.size - number_of_parameters)
 
-# we have constant voltage uncertainity which is 0.1 V
-voltage_uncertainity = 0.1
+# assume 5% uncertinity due to connection errors, human factors etc.
+setup_uncetainity = 0.05
+
+# uncertainity of connections 
 
 def current_uncertainity(current):
     """return the uncertainity in current for given values of current"""
+    multimeter_uncertainity = 0.0
     if current > 100:
-        return 1
+        multimeter_uncertainity = 1
     elif current > 10:
-        return 0.1
+        return max(0.1, multimeter_uncertainity*current)
+        multimeter_uncertainity = 0.1
     else:
-        return 0.01
+        multimeter_uncertainity = 0.01
+        
+    return max(multimeter_uncertainity, setup_uncetainity*current)
+    
 
 #  model function
 def linear_model_function(x, a, b):
@@ -35,9 +42,6 @@ def analyse_file(filename, title):
                                                     usecols=(0,1), 
                                                     delimiter=",", 
                                                     unpack=True)
-        
-    # create error array for the voltage
-    voltage_errors = np.ones_like(measured_voltages) * voltage_uncertainity
 
     # create error array for the current
     current_errors = np.vectorize(current_uncertainity)(measured_currents)
