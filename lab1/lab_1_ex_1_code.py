@@ -39,7 +39,7 @@ def analyse_file(filename, title, units):
                           current_errors, 
                           guess=(1/100, 0))
     
-    # generate data for predicted values using estimated current
+    # generate data for predicted values using estimated resistance
     # obtained using  curve fit model
     voltage_data = np.linspace(0, measured_voltages[-1], 100)
     predicted_currents = linear_model_function(voltage_data, 
