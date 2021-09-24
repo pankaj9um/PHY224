@@ -5,3 +5,4 @@
 *.out
 *.fls
 *.DS_Store
+*.pyc
