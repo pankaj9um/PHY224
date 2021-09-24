@@ -13,7 +13,7 @@ def current_uncertainty(current):
     if current > 100:
         multimeter_uncertainty = 1
     elif current > 10:
-        return max(0.1, multimeter_uncertainty*current)
+        multimeter_uncertainty = 0.1
     else:
         multimeter_uncertainty = 0.01
         
