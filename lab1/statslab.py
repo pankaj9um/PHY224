@@ -73,11 +73,14 @@ class plot_details:
         self.ydata_predicted = y
     def legend_position(self, p):
         self.legend_loc = p
+    def chi2_reduced(self, c):
+        self.chi2_reduced = c
                 
 def plot(plot_details, new_figure=True, error_plot=True):
     """Utility method to plot errorbar and line chart together, with given arguments"""
     if new_figure:
-        plt.figure(figsize=(16, 10))
+        fig  = plt.figure(figsize=(16, 10))
+        fig.tight_layout()
         plt.style.use("seaborn-whitegrid")
             
     # plot the error bar chart
