@@ -13,22 +13,22 @@ def chi2reduced(y_measure, y_predict, errors, number_of_parameters):
     return chi2(y_measure, y_predict, errors)/(y_measure.size - number_of_parameters)
 
 # assume 5% uncertinity due to connection errors, human factors etc.
-setup_uncetainity = 0.05
+setup_uncetainty = 0.05
 
-# uncertainity of connections 
+# uncertainty of connections 
 
-def current_uncertainity(current):
-    """return the uncertainity in current for given values of current"""
-    multimeter_uncertainity = 0.0
+def current_uncertainty(current):
+    """return the uncertainty in current for given values of current"""
+    multimeter_uncertainty = 0.0
     if current > 100:
-        multimeter_uncertainity = 1
+        multimeter_uncertainty = 1
     elif current > 10:
-        return max(0.1, multimeter_uncertainity*current)
-        multimeter_uncertainity = 0.1
+        return max(0.1, multimeter_uncertainty*current)
+        multimeter_uncertainty = 0.1
     else:
-        multimeter_uncertainity = 0.01
+        multimeter_uncertainty = 0.01
         
-    return max(multimeter_uncertainity, setup_uncetainity*current)
+    return max(multimeter_uncertainty, setup_uncetainty*current)
     
 
 #  model function
@@ -44,7 +44,7 @@ def analyse_file(filename, title):
                                                     unpack=True)
 
     # create error array for the current
-    current_errors = np.vectorize(current_uncertainity)(measured_currents)
+    current_errors = np.vectorize(current_uncertainty)(measured_currents)
 
     # do the curve fitting
     popt, pcov = optim.curve_fit(linear_model_function, 

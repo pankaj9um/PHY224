@@ -1,4 +1,4 @@
-%++++++++++++++++++++++++++++++++++++++++
+% ++++++++++++++++++++++++++++++++++++++++
 % Don't modify this section unless you know what you're doing!
 \documentclass[letterpaper,12pt]{article}
 \usepackage{tabularx} % extra features for tabular environment
@@ -10,6 +10,7 @@
 \usepackage{listings}
 \usepackage{csvsimple}
 \usepackage{verbatim}
+\usepackage{float}
 \usepackage{graphicx} % Allows including images
 \hypersetup{
 	colorlinks=true,       % false: boxed links; true: colored links
@@ -29,7 +30,7 @@
 
 \subsection{Introduction}
 
-In this exercise, we fit the experimental data to a linear function.  
+In this exercise, we fit the experimental data to a linear function \cite{lab-manual-ex1}.  
 
 \subsection{Methods}
 
@@ -37,7 +38,7 @@ We followed the method descibed in the lab manual to setup the circuit. Followin
 performed,
 
 \begin{enumerate}
-  \item Connect the ameter, voltmeter, and power supply to the resistor. The setup of the circuit is shown (Figure 1).
+  \item Connect the ameter, voltmeter, and power supply to the resistor. The setup of the circuit is shown in Figure ~\ref{setup}.
   \item Vary the voltage on the power supply.
   \item Record the voltage and current from the multimeters, along with uncertainty.
   \item Change the voltage, and record the new values. This step was repeated to record more data  points.
@@ -45,9 +46,14 @@ performed,
   \item After performing all the above measurements, disconnected the power, and switch the voltmeter to resistance. The resistance value was noted for reference.
 \end{enumerate}
 
-\begin{center}
-  \includegraphics[width=1.0\linewidth]{../lab_1_ex_1_setup.png}    
-\end{center}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\linewidth]{../lab_1_ex_1_setup.png}    
+  \caption{Electrical Circuit Setup}
+  \label{setup}
+\end{figure}
+
+\noindent
 Folowing observations were made for the instruments,
 
 \begin{enumerate}
@@ -55,17 +61,48 @@ Folowing observations were made for the instruments,
   \item We accidently changed the potentiometer value, so we had to repeat the set of observations for it.
 \end{enumerate}
 
-\csvautotabular{../100k.csv}
-\linebreak
-\csvautotabular{../Potentiometer.csv}
+\noindent
+Below are the table containing the data collected for 100 kiloohm resistor (Table \ref{100kdata}) and Potentiometer (Table \ref{potentiometerdata}) for Voltage, measured in Volts, and Current, measured  in milli Ampere.
+\begin{table}[H]
+  \centering
+  \csvautotabular{../100k.csv}
+  \caption{Readings of Voltage and Current for 100 kiloohm Resistor}
+  \label{100kdata}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \csvautotabular{../Potentiometer.csv}
+  \caption{Readings of Voltage and Current for Potentiometer}
+  \label{potentiometerdata}
+\end{table}
+
+\noindent
+Following table records the reference values measured for both the resistors.
+\begin{table}[H]
+  \centering
+  \csvautotabular{../reference_resistance.csv}
+  \caption{Reference resistance using multimeter}
+  \label{referenceres}
+\end{table}
 
 \subsection{Results}
 \subsection{Analysis \& Discussion }
 
-\begin{center}
-    \includegraphics[width=1.0\linewidth]{../lab_1_ex_1_plot_100k.png}    
-    \includegraphics[width=1.0\linewidth]{../lab_1_ex_1_plot_potentiometer.png}    
-\end{center}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\linewidth]{../lab_1_ex_1_plot_100k.png}    
+  \caption{100 kiloohm data curve fitting}
+  \label{100k-curve-fit}
+\end{figure}
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\linewidth]{../lab_1_ex_1_plot_potentiometer.png}    
+  \caption{Potentiometer data curve fitting}
+  \label{potentiometer-curve-fit}
+\end{figure}
 
 \subsection{Conclusions}
 
@@ -74,26 +111,14 @@ Folowing observations were made for the instruments,
 \section{Exercise 3:  Nonlinear fitting methods II}
 
 \subsection{Introduction}
-
-\csvautotabular{../100k.csv}
-\linebreak
-\csvautotabular{../Potentiometer.csv}
 \subsection{Methods}
 \subsection{Results}
 \subsection{Analysis \& Discussion }
-
-\begin{center}
-    \includegraphics[width=1.0\linewidth]{../lab_1_ex_1_plot_100k.png}    
-    \includegraphics[width=1.0\linewidth]{../lab_1_ex_1_plot_potentiometer.png}    
-\end{center}
-
 \subsection{Conclusions}
 
 \pagebreak
 
-\begin{center}
-  \section*{Appendix}
-\end{center}
+\section*{\hfil Appendix\hfil}
 
 \subsection*{Python Code: Exercise 1}
 
@@ -103,13 +128,12 @@ Folowing observations were made for the instruments,
 
 \subsection*{Python Code: Exercise 3}
 
-\verbatiminput{../lab_1_ex_1_code.py}
-
 \pagebreak
 
 \begin{thebibliography}{99}
 
-\bibitem{melissinos}
+\bibitem{lab-manual-ex1} Lab Manual - PyLab - Ohm and Power laws - Exerciese 1.
+\bibitem{lab-manual-ex2} Lab Manual - PyLab - Ohm and Power laws - Exerciese 2.
 
 \end{thebibliography}
 
