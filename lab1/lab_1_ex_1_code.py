@@ -54,7 +54,8 @@ def analyse_file(filename, title, units):
                                   current_errors, 
                                   3)
     
-    # fill in the plot details for curve fitted model in our plot_details object
+    # fill in the plot details for curve fitted 
+    # model in our plot_details object
     plot_data = utils.plot_details("Current Vs Voltage (%s)" % title)
     plot_data.errorbar_legend("measured current (%s)" % units["current"])
     plot_data.fitted_curve_legend("curve fit prediction")
@@ -73,10 +74,12 @@ def analyse_file(filename, title, units):
         
     print("\tLinear model slope (a) = %.2f" % popt[0])
     print("\tLinear model y-intercept (b) := %.2f" % popt[1])
-    print("\tEstimated Resistance (1/a) = %.2f %s" % (1/popt[0], units["resistance"]))
+    print("\tEstimated Resistance (1/a) = %.2f %s" % (1/popt[0], 
+                                                      units["resistance"]))
 
     print("\tchi2reduced (Curve Fit) := %.3f" % chi2r_curve_fit)
-    print("\tUncertainty in resistance  := %.3f %s" % (pstd[0], units["resistance"]))
+    print("\tUncertainty in resistance  := %.3f %s" % (pstd[0], 
+                                                       units["resistance"]))
 
     plt.savefig("lab_1_ex_1_plot_%s.png" % filename[:-4].lower())
 

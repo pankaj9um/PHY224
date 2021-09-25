@@ -18,10 +18,12 @@ def chi2(y_measure,y_predict,errors):
 def chi2reduced(y_measure, y_predict, errors, number_of_parameters):
     """Calculate the reduced chi squared value given a measurement with errors
     and prediction, and knowing the number of parameters in the model."""
-    return chi2(y_measure, y_predict, errors)/(y_measure.size - number_of_parameters)
+    return chi2(y_measure, y_predict, errors)/ \
+            (y_measure.size - number_of_parameters)
 
 def read_data(filename, skiprows=1, usecols=(0,1)):
-    """Load give\n file as csv with given parameters, returns the unpacked values"""
+    """Load give\n file as csv with given parameters, 
+    returns the unpacked values"""
     return np.loadtxt(filename,
                       skiprows=skiprows,
                       usecols=usecols, 
@@ -45,7 +47,8 @@ def linear_regression(xdata, ydata):
     """Simple linear regression model"""
     x_bar = np.average(xdata)
     y_bar = np.average(ydata)
-    a_hat = np.sum( (xdata - x_bar) * (ydata - y_bar) ) / np.sum( np.power((xdata - x_bar), 2) )
+    a_hat = np.sum( (xdata - x_bar) * (ydata - y_bar) ) / \
+            np.sum( np.power((xdata - x_bar), 2) )
     b_hat = y_bar - a_hat  * x_bar
     return a_hat, b_hat
 
@@ -77,7 +80,8 @@ class plot_details:
         self.chi2_reduced = c
                 
 def plot(plot_details, new_figure=True, error_plot=True):
-    """Utility method to plot errorbar and line chart together, with given arguments"""
+    """Utility method to plot errorbar and line chart together, 
+    with given arguments"""
     if new_figure:
         fig  = plt.figure(figsize=(16, 10))
         fig.tight_layout()
