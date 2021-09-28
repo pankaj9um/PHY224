@@ -56,26 +56,30 @@ measured_voltages, measured_currents = utils.read_data(filename,
 current_errors = np.vectorize(current_uncertainty)(measured_currents)
 
 # create logarithmic error array for the current
-current_errors_logarithmic = np.vectorize(current_uncertainty_logarithmic)(measured_currents)
+current_errors_logarithmic = np.vectorize(
+    current_uncertainty_logarithmic)(measured_currents)
 
 def do_linear_analysis():
+    measured_currents_logs = np.log(measured_currents)
+    measured_voltages_logs = np.log(measured_voltages)
+    
     # fit the measured data using curve_fit function
     popt, pstd = utils.fit_data(linear_model_function, 
-                          measured_voltages, 
-                          measured_currents, 
-                          current_errors, 
+                          measured_voltages_logs, 
+                          measured_currents_logs, 
+                          current_errors_logarithmic, 
                           guess=(1/100, 0))
     
     # generate data for predicted values using estimated resistance
     # obtained using  curve fit model
-    voltage_data = np.linspace(0, measured_voltages[-1], 100)
+    voltage_data = np.linspace(0, measured_voltages_logs[-1], 100)
     predicted_currents = linear_model_function(voltage_data, 
                                                 popt[0],
                                                 popt[1])
     
     # calculate the chi2reduced for curve fitted model
-    chi2r_curve_fit = utils.chi2reduced(measured_currents, 
-                                  linear_model_function(measured_voltages, 
+    chi2r_curve_fit = utils.chi2reduced(measured_currents_logs, 
+                                  linear_model_function(measured_voltages_logs, 
                                                              popt[0],
                                                              popt[1]), 
                                   current_errors, 
@@ -88,9 +92,9 @@ def do_linear_analysis():
     plot_data.fitted_curve_legend("curve fit prediction")
     plot_data.x_axis_label("Voltage (%s)" % units["voltage"])
     plot_data.y_axis_label("Current (%s)" % units["current"])
-    plot_data.xdata(measured_voltages)
-    plot_data.ydata(measured_currents)
-    plot_data.yerrors(current_errors)
+    plot_data.xdata(measured_voltages_logs)
+    plot_data.ydata(measured_currents_logs)
+    plot_data.yerrors(current_errors_logarithmic)
     plot_data.xdata_for_prediction(voltage_data)
     plot_data.ydata_predicted(predicted_currents)
     plot_data.legend_position("upper left")
@@ -150,11 +154,6 @@ def do_non_linear_analysis():
     
     # plot the data
     utils.plot(plot_data)
-    
-    # plot_data.set_x_log_scale(True)
-    # plot_data.set_y_log_scale(True)
-    utils.plot(plot_data, new_figure=False)
-
         
     print("\tNon-Linear model slope (a) = %.2f" % popt[0])
     print("\tNon-Linear model y-intercept (b) := %.2f" % popt[1])
@@ -167,7 +166,6 @@ def do_non_linear_analysis():
     
     plt.savefig("lab_1_ex_2_plot_non_linear_%s.png" % filename[:-4].lower())
     
-
 # do linear analysis
 do_linear_analysis()
 
