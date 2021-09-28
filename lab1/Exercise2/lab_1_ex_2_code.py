@@ -114,13 +114,15 @@ def do_linear_analysis():
     
     plt.savefig("lab_1_ex_2_plot_linear_%s.png" % filename[:-4].lower())
     
-def do_non_linear_analysis():
+    return popt
+    
+def do_non_linear_analysis(guess):
     # fit the measured data using curve_fit function
     popt, pstd = utils.fit_data(non_linear_model_function, 
                           measured_voltages, 
                           measured_currents, 
                           current_errors, 
-                          guess=(1/100, 0))
+                          guess=(guess[0], guess[1]))
     
     # generate data for predicted values using estimated resistance
     # obtained using  curve fit model
@@ -167,7 +169,7 @@ def do_non_linear_analysis():
     plt.savefig("lab_1_ex_2_plot_non_linear_%s.png" % filename[:-4].lower())
     
 # do linear analysis
-do_linear_analysis()
+guess = do_linear_analysis()
 
 # do non-linear analysis
-do_non_linear_analysis()
+do_non_linear_analysis(guess)
