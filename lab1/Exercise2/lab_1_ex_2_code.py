@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import statslab as utils
 
 # precision iundertainity for the measurements
-precision_uncertainity = 0.5
+precision_uncertainity = 0.015
 
 def current_uncertainty(current):
     """return the uncertainty in current for given values of current"""
@@ -17,19 +17,12 @@ def current_uncertainty(current):
     else:
         multimeter_uncertainty = 0.01
         
-    return max(multimeter_uncertainty, precision_uncertainity)
+    return max(multimeter_uncertainty, current * precision_uncertainity)
 
 def current_uncertainty_logarithmic(current):
-    """return the uncertainty in current for given values of current"""
-    multimeter_uncertainty = 0.0
-    if current > 100:
-        multimeter_uncertainty = 1
-    elif current > 10:
-        multimeter_uncertainty = 0.1
-    else:
-        multimeter_uncertainty = 0.01
-        
-    return max(precision_uncertainity, multimeter_uncertainty) / current
+    """return the logarithmic uncertainty in current for 
+    given values of current"""
+    return current_uncertainty(current) / current
 
     
 #  model function
@@ -72,7 +65,8 @@ def do_linear_analysis():
     
     # generate data for predicted values using estimated resistance
     # obtained using  curve fit model
-    voltage_data = np.linspace(0, measured_voltages_logs[-1], 100)
+    voltage_data = np.linspace(measured_voltages_logs[0] * 0.9, 
+                               measured_voltages_logs[-1] * 1.1, 100)
     predicted_currents = linear_model_function(voltage_data, 
                                                 popt[0],
                                                 popt[1])
@@ -126,7 +120,9 @@ def do_non_linear_analysis(guess):
     
     # generate data for predicted values using estimated resistance
     # obtained using  curve fit model
-    voltage_data = np.linspace(0, measured_voltages[-1], 100)
+    voltage_data = np.linspace(measured_voltages[0] * 0.9, 
+                               measured_voltages[-1] *  1.1, 
+                               100)
     predicted_currents = non_linear_model_function(voltage_data, 
                                                 popt[0],
                                                 popt[1])
