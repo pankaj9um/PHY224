@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 # import our utility method library from statslab.py
 import statslab as utils
 
-# precision iundertainity for the measurements
-precision_uncertainity = 0.015
+# precision uncertainty for the measurements
+precision_uncertainity = 0.015 # 1.5%
 
 def current_uncertainty(current):
     """return the uncertainty in current for given values of current"""

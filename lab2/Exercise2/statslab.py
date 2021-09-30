@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 ###############################################################################
 
 # use bigger font size for plots
-plt.rcParams.update({'font.size': 20})
+plt.rcParams.update({'font.size': 16})
 
 def chi2(y_measure,y_predict,errors):
     """Calculate the chi squared value given a measurement with errors and 
