@@ -1,46 +1,63 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+@author: Pankaj Patil
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 
 # import our utility method library from statslab.py
 import statslab as utils
 
-# assume 5% uncertinity due to connection errors, human factors etc.
-setup_uncetainty = 0.05
+# units for the measured quantities
+units = {
+    "voltage": "V",
+    "current": "mA",
+    "resistance": "kiloohm"
+}
 
+# assume 2% uncertinity due to connection errors, human factors etc.
+uncertainty_correction = 0.02
+
+# compute the uncertainty in current values
 def current_uncertainty(current):
     """return the uncertainty in current for given values of current"""
-    multimeter_uncertainty = 0.0
-    if current > 100:
-        multimeter_uncertainty = 1
-    elif current > 10:
-        multimeter_uncertainty = 0.1
-    else:
-        multimeter_uncertainty = 0.01
-        
-    return max(multimeter_uncertainty, setup_uncetainty*current)
+    error_accuracy = 0.0075 * current
+    error_precision = 0.01
     
-#  model function
+    # multimeter unceertainty is maxmimum of the above two
+    multimeter_uncertainty = max(error_accuracy, error_precision)
+        
+    # we additionaly compute uncertainty using 2% uncertainly due to 
+    # connections and human factors
+    return max(multimeter_uncertainty, uncertainty_correction*current)
+    
+#  linear model function
 def linear_model_function(x, a, b):
     return a*x + b 
 
-def analyse_file(filename, title, units):
+# analyse the data file
+def analyse_file(filename, title): 
     print(filename)
     
+    # read the data from the data file, and collect measured  voltages and
+    # currents
     measured_voltages, measured_currents = utils.read_data(filename,
                                                            usecols=(0,1))
 
-    # create error array for the current
+    # create error array for the current. use np.vectorize to make the 
+    # uncertainty function operate on arrays.
     current_errors = np.vectorize(current_uncertainty)(measured_currents)
     
     # fit the measured data using curve_fit function
     popt, pstd = utils.fit_data(linear_model_function, 
                           measured_voltages, 
                           measured_currents, 
-                          current_errors, 
-                          guess=(1/100, 0))
+                          current_errors)
     
     # generate data for predicted values using estimated resistance
-    # obtained using  curve fit model
+    # obtained using curve fit model
     voltage_data = np.linspace(0, measured_voltages[-1], 100)
     predicted_currents = linear_model_function(voltage_data, 
                                                 popt[0],
@@ -57,8 +74,8 @@ def analyse_file(filename, title, units):
     # fill in the plot details for curve fitted 
     # model in our plot_details object
     plot_data = utils.plot_details("Current Vs Voltage (%s)" % title)
-    plot_data.errorbar_legend("measured current (%s)" % units["current"])
-    plot_data.fitted_curve_legend("curve fit prediction")
+    plot_data.errorbar_legend("Measured Current with Uncertainty (%s)" % units["current"])
+    plot_data.fitted_curve_legend("Linear Fit for Ohm's Law")
     plot_data.x_axis_label("Voltage (%s)" % units["voltage"])
     plot_data.y_axis_label("Current (%s)" % units["current"])
     plot_data.xdata(measured_voltages)
@@ -71,38 +88,30 @@ def analyse_file(filename, title, units):
     
     # plot the data
     utils.plot(plot_data)
-        
+            
     print("\tLinear model slope (a) = %.2f" % popt[0])
-    print("\tLinear model y-intercept (b) := %.2f" % popt[1])
-    print("\tEstimated Resistance (1/a) = %.2f %s" % (1/popt[0], 
+    print("\tLinear model y-intercept (b) := %.4f" % popt[1])
+    print("\tLinear model slope (a) uncertainty := %.4f" % pstd[0])
+    print("\tLinear model y-intercept (b) uncertainty := %.4f" % pstd[1])
+    print("\tEstimated Resistance (1/a) = %.4f %s" % (1/popt[0], 
                                                       units["resistance"]))
 
     print("\tchi2reduced (Curve Fit) := %.3f" % chi2r_curve_fit)
-    print("\tUncertainty in resistance  := %.3f %s" % (pstd[0], 
+    print("\tUncertainty in resistance  := %.4f %s" % (pstd[0], 
                                                        units["resistance"]))
-
+    
     plt.savefig("lab_1_ex_1_plot_%s.png" % filename[:-4].lower())
 
 # files to analyse
 file_titles ={
     "100k.csv": {
-        "title": "100 kiloohm",
-        "units": {
-            "voltage": "V",
-            "current": "mA",
-            "resistance": "kiloohm"
-        }
+        "title": "Resistor: 100 $k\Omega$"
     },
     "Potentiometer.csv": {
-        "title": "potentiometer",
-        "units": {
-                    "voltage": "mV",
-                    "current": "mA",
-                    "resistance": "ohm"
-                }    
-        }
+        "title": "Potentiometer"
+    }
 }
 
 for filename, data in file_titles.items():
-    analyse_file(filename, data["title"], data["units"])
+    analyse_file(filename, data["title"])
     

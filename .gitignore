@@ -6,3 +6,6 @@
 *.fls
 *.DS_Store
 *.pyc
+*.toc
+*.lot
+*.lof

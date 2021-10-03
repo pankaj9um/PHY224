@@ -1,14 +1,18 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+@author: Pankaj Patil
+"""
+
 import numpy as np
 import scipy.optimize as optim
 import matplotlib.pyplot as plt
 
+# This file contains various utility methods to do data analysis, curve 
+# fitting and plotting
 
-###############################################################################
-# Utility Methods Library
-#
-# This file contains some utility method which are common to our data analysis.
-# This library also contains customized plotting methods.
-###############################################################################
+# use bigger font size for plots
+plt.rcParams.update({'font.size': 20})
 
 def chi2(y_measure,y_predict,errors):
     """Calculate the chi squared value given a measurement with errors and 
