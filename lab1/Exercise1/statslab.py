@@ -60,7 +60,7 @@ class plot_details:
     """Utility class to store information about plots"""
     def __init__(self, title):
         self.title = title
-    def errorbar_legend(self, v):
+    def set_errorbar_legend(self, v):
         self.errorbar_legend = v
     def fitted_curve_legend(self, v):
         self.fitted_curve_legend = v
@@ -93,11 +93,15 @@ def plot(plot_details, new_figure=True, error_plot=True):
             
     # plot the error bar chart
     if error_plot:
+        label = None
+        if hasattr(plot_details, "errorbar_legend"):
+            label = plot_details.errorbar_legend
+            
         plt.errorbar(plot_details.xdata,
                     plot_details.ydata, 
                     yerr=plot_details.yerrors, 
                     marker="o",
-                    label=plot_details.errorbar_legend,
+                    label=label,
                     capsize=2,
                     ls="")
 

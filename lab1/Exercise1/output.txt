@@ -1,0 +1,30 @@
+100k.csv
+  Linear Model := f(x) = ax + b
+    Linear model slope (a) = 0.0102
+    Linear model y-intercept (b) := 0.0001
+    Linear model slope (a) uncertainty := 0.0004
+    Linear model y-intercept (b) uncertainty := 0.0064
+    Estimated Resistance (1/a) = 98.1499 kiloohm
+    Uncertainty in resistance  := 0.0004 kiloohm
+    chi2reduced (Curve Fit) := 0.001
+  Linear Model := f(x) = ax
+    Linear model slope (a) = 0.0102
+    Linear model slope (a) uncertainty := 0.0003
+    Estimated Resistance (1/a) = 98.1189 kiloohm
+    Uncertainty in resistance  := 0.0003 kiloohm
+    chi2reduced (Curve Fit) := 0.001
+Potentiometer.csv
+  Linear Model := f(x) = ax + b
+    Linear model slope (a) = 0.0638
+    Linear model y-intercept (b) := 0.0020
+    Linear model slope (a) uncertainty := 0.0011
+    Linear model y-intercept (b) uncertainty := 0.0077
+    Estimated Resistance (1/a) = 15.6634 kiloohm
+    Uncertainty in resistance  := 0.0011 kiloohm
+    chi2reduced (Curve Fit) := 0.020
+  Linear Model := f(x) = ax
+    Linear model slope (a) = 0.0641
+    Linear model slope (a) uncertainty := 0.0005
+    Estimated Resistance (1/a) = 15.6041 kiloohm
+    Uncertainty in resistance  := 0.0005 kiloohm
+    chi2reduced (Curve Fit) := 0.026

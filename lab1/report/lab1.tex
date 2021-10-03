@@ -24,7 +24,9 @@
 \setlength\parskip{1em plus 0.1em minus 0.2em}
 
 \begin{document}
-\title{PyLab - Ohm and Power laws}
+\title{%
+PyLab - Ohm and Power laws \\
+\large PHY224 Lab 1}
 \author{Fredrik Dahl Bråten, Pankaj Patil}
 \date{\today}
 \maketitle
@@ -39,7 +41,7 @@
 \subsection{Abstract}
 
 Ohm's law explains the relationship between current flowing through a resistor and voltage applied across it.
-As per Ohm's law, the currrent flowing through a resistor is directly proportional to the
+As per Ohm's law, the current flowing through a resistor is directly proportional to the
 voltage applied to its ends. So we have,
 
 $$V = IR$$
@@ -52,7 +54,7 @@ Where,
 \end{itemize}
 
 In this exercise, using Python modules for data analysis, namely numpy, scipy, we 
-verify the Ohm's law. Voltage and Currrent values are recorded for a known resistor 
+verify the Ohm's law. Voltage and Current values are recorded for a known resistor 
 and for a Potentiometer using digital multimeters. These recorded values are then
 used to arrive at the linear relation and obtain the values of the proportionality constants  between
 the voltages and currents. 
@@ -61,25 +63,25 @@ The quality of linear fit is obtained by calculating the $\chi^2_{red}$ for the 
 for the resistor and Potentiometer. 
 
 The visual analysis of the data is done by plotting the measured data with uncertainty values, along with the linear model
-fit grphically, using matplotlib.pyplot Python module.
+fit graphically, using matplotlib.pyplot Python module.
 
 \subsection{Introduction}
 
-In this exercise we analyse the relationship between current through a circuit element (Resistor or Potentiometer), and the voltage applied across that element. 
+In this exercise we analyze the relationship between current through a circuit element (Resistor or Potentiometer), and the voltage applied across that element. 
 With this analysis we establish the Ohm's law which predicts the value of Current, given the value of Resistance and the 
 Voltage across the resistor.
 
 The relation we want to verify is $$I = \frac{V}{R}$$
 
-Here we take $V$, the voltage, as independent vaiable, and $I$, the current as dependent variable. Using the measured data
+Here we take $V$, the voltage, as independent variable, and $I$, the current as dependent variable. Using the measured data
 we use the linear model function $$f(x) = ax + b$$ to fit the data. 
 
-In above expression $x$ is the independent variable which we measure as Voltage, and $f(x)$ is the dependent varriable, which is 
+In above expression $x$ is the independent variable which we measure as Voltage, and $f(x)$ is the dependent variable, which is 
 the Current.
 
 \subsection{Methods, Materials and Experimental Procedure}
 
-We followed the method descibed in the lab manual\cite{lab-manual-ex1} to setup the circuit. Setup as shown in circuit
+We followed the method described in the lab manual\cite{lab-manual-ex1} to setup the circuit. Setup as shown in circuit
 diagram in Figure \ref{setup}, was used to do the measurements.
 
 \begin{figure}[H]
@@ -101,40 +103,48 @@ was recorded using the multimeter.
   \label{refdata}
 \end{table}
 
+For the Potentiometer, we accidentally changed the resistance before noting down the reference value. We chose to
+discard the readings taken, and took different set of measurements along with reference resistance without disturbing
+the setup the second time.
+
 The uncertainty computation is done using the multimeter accuracy error ($0.75 \%$) and the error in 
-precision, which is the fluctuation in last digit of the multimeter ($0.01$). To account for the other
-external factors as described in the lab manual section 4.1\cite{lab-manual-ex1}, we assume $2\%$ error in our measurements.
+precision, which is the fluctuation in last digit of the multimeter ($0.01\ mA$). To account for the other
+external factors as described in the lab manual section 4.1\cite{lab-manual-ex1}, we assume additional $2\%$ error in our measurements.
 
 \subsection{Results}
 
-Following the experimental procedures described in previous section, data for Voltage and Currrent values was recorded for 
+Following the experimental procedures described in previous section, data for Voltage and Current values was recorded for 
 $100\ k\Omega$ resistor and Potentiometer in Table \ref{100kdata}, and Table \ref{potentiometerdata} respectively.
 
-The plots of measured currrent versus voltage for 100 $k\Omega$ and Potentiometer are shown in Figure \ref{100k-curve-fit}
+The plots of measured current versus voltage for 100 $k\Omega$ and Potentiometer are shown in Figure \ref{100k-curve-fit}
 and Figure \ref{potentiometer-curve-fit} respectively.
 
 In both the plots, the linear fit for measured data is drawn using the predicted value of currents by the linear model  parameters
 obtained by scipy.optimize.curve\_fit function.
 
-For 100 $k\Omega$ resistor, we get the optimal parameters as
-$$[a,b] = [0.01\ 0.0001] \pm [0.0004\ 0.0064]$$
-Hence, we compute the resistance,
-$$R = \frac{1}{a} = 98.1500 \pm 0.0004 \ k\Omega$$
 
-For Potentiometer, we get the optimal parameters as
-$$[a,b] = [0.06\ 0.0020] \pm [0.0011\ 0.0077]$$
-Hence, we compute the resistance,
-$$R = \frac{1}{a} = 98.1500 \pm 0.0004 \ k\Omega$$
+
+For 100 $k\Omega$ resistor, we get the optimal parameters for model $f(x)= ax+b$ as
+$$[a,b] = [0.0102\ 0.0001] \pm [0.0004\ 0.0064]$$
+We compute the resistance,
+$$R = \frac{1}{a} \pm \Delta a= 98.1500 \pm 0.0004 \ k\Omega$$
+
+For Potentiometer, we get the optimal parameters for model $f(x)= ax+b$ as
+$$[a,b] = [0.0638\ 0.0020] \pm [0.0011\ 0.0077]$$
+We compute the resistance as,
+$$R = \frac{1}{a} \pm \Delta a= 15.6634 \pm 0.0011 \ k\Omega$$
+
+The uncertainty in resistance $R$ is given by quadrature formula
+$$R = \frac{1}{a} \implies \Delta R = \Delta a$$
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.95\linewidth]{../Exercise1/lab_1_ex_1_plot_100k.png}   
   \begin{center}
-    $f(x) = 0.01 x + 0.0001 $
+    $f(x) = (0.0102 \pm 0.0004) x + (0.0001 \pm 0.0064),\ \ \ \chi^2_{red} = 0.001,\ \ \ R = \frac{1}{a}\pm \Delta a = 98.1499 \pm 0.0004 \ k\Omega $
     
-    $\chi^2_{red} = 0.001$
-
-    $R = \frac{1}{a} = 15.660 \pm 0.001 \ k\Omega$
+    $f(x) = (0.0102 \pm 0.0003) x,\ \ \ \chi^2_{red} = 0.001,\ \ \ R = \frac{1}{a}\pm \Delta a = 98.1189 \pm 0.0003 \ k\Omega $
+    
   \end{center}  
   \caption{100 $k\Omega$ Data Curve Fitting}
   \label{100k-curve-fit}
@@ -145,11 +155,10 @@ $$R = \frac{1}{a} = 98.1500 \pm 0.0004 \ k\Omega$$
   \centering
   \includegraphics[width=0.95\linewidth]{../Exercise1/lab_1_ex_1_plot_potentiometer.png}   
   \begin{center}
-    $f(x) = 0.06 x + 0.0020$
+    $f(x) = (0.0638 \pm 0.0011) x + (0.0020 \pm 0.0011),\ \ \ \chi^2_{red} = 0.020,\ \ \ R = \frac{1}{a} \pm \Delta a= 15.660 \pm 0.0011  \ k\Omega $
     
-    $\chi^2_{red} = 0.023$
-
-    $R = \frac{1}{a} = 15.660 \pm 0.001 \ k\Omega$
+    $f(x) = (0.0641 \pm 0.0005) x,\ \ \ \chi^2_{red} = 0.026,\ \ \ R = \frac{1}{a}\pm \Delta a = 15.660 \pm 0.0005 \ k\Omega $
+    
   \end{center}  
   \caption{Potentiometer Data Curve Fitting}
   \label{potentiometer-curve-fit}
@@ -157,16 +166,47 @@ $$R = \frac{1}{a} = 98.1500 \pm 0.0004 \ k\Omega$$
 
 \subsection{Discussion}
 
+In this exercise, the data sets obtained using the measurements were used as is without discarding any data points. As was 
+suggested in the manual the data analysis was done for linear models, $f(x) = ax +b$ and $f(x) =  ax$.
+
+The uncertainty calculations are based on error in multimeter accuracy (0.75\%) provided by the manufacturer and error in precision of
+the measurement obtained. The error in precision was taken to be fluctuations in last digit of each measurement,  which
+we found to be consistent at 0.01 mA. To account for various other factors contributing to error in the measurement
+we added 2\% correction factor to the error estimate. The final uncertainty was taken as higher of the three uncertainty
+values.
+
+The readings were then fit to linear model using the scipy.optimize.curve\_fit function. In both the cases, namely 100 $k\Omega$
+resistor and Potentiometer, the data is plotted along with the model predictions, as shown in Figure \ref{100k-curve-fit} and 
+Figure \ref{potentiometer-curve-fit}. We note that for both models and both circuit elements, the predicted graph
+passes through the data points error bars nicely. The linear models are more than good fit is evident 
+from the fact that in all cases we get low values of $\chi^2_{red}$.
+
+When data is fit to $f(x) = ax + b$, we note that the y-intercept of the line is not zero, although it is a really low value for all the cases. Hence 
+for this model the predicted graph does not pass through point (0,0). The reason for non-zero y-intercept can be attributed to
+the uncertainties in the measurements. When we force the linear model $f(x) = ax$, the $\chi_{red}^2$ values are little higher, for example,
+in Potentiometer case, it is 0.026 for $f(x) = ax$ against 0.020 for $f(x) = ax + b$. But in both the cases it is less than 1, giving more that 
+a good fit. 
+
+The graph lines for both the models are indistinguishable on the plots, in both 100 $k\Omega$ and 
+Potentiometer cases. The uncertainty in the measurement of resistance in $f(x) = ax$ is slightly less than the same obtained with $f(x) = ax + b$.
+
+Using both the models the resistance values match with the measured values recorded in Table \ref{refdata}, within
+uncertainties of measurements, really well.
+
+The low values of $\chi_{red}^2$ indicate that we have an over-fit model and we needed more readings to do the data analysis. But 
+the resistors for electrical circuits are designed to be highly linear and reliable \cite{lab-manual-ex1}, hence we expect to get low values 
+for $\chi_{red}^2$. 
+
 \subsection{Conclusions}
 
-In this exercise, we successfully demonstrated the linear relationship between the Voltage accross a 
-resistor and  the current flowing through it. Using the Python data analyse modules like numpy and scipy we 
+In this exercise, we successfully demonstrated the linear relationship between the Voltage across a 
+resistor and  the current flowing through it. Using the Python data analysis modules like numpy and scipy we 
 were able to obtain optimal parameters for linear model function. The optimal parameters matched within
 the uncertainty to the reference values of the resistance we recorded for 100 $k\Omega$ resistor and
-Potentiometer. The low value of $\chi_{red}^2$ in both the cases
- indicate that we have over-fit model. But as noted in the lab manual\cite{lab-manual-ex1}, resistors
- for electrical circuits are designed to be very linear and reliable, hence we expect low values of
- $\chi_{red}^2$ for measured data.
+Potentiometer. The low values of $\chi_{red}^2$ in both the cases
+indicate that we have over-fit model. But as noted in the lab manual\cite{lab-manual-ex1}, resistors
+for electrical circuits are designed to be very linear and reliable, hence we expect low values of
+$\chi_{red}^2$ for measured data.
 
 \pagebreak
 
@@ -330,6 +370,12 @@ the data for 100 $k\Omega$ resistor, and Potentiometer.
 \subsubsection{lab\_1\_ex\_1\_code.py}
 \noindent\rule{\textwidth}{1pt}
 \verbatiminput{../Exercise1/lab_1_ex_1_code.py}
+\noindent\rule{\textwidth}{1pt}
+
+\pagebreak
+\subsubsection{Program Output}
+\noindent\rule{\textwidth}{1pt}
+\verbatiminput{../Exercise1/output.txt}
 \noindent\rule{\textwidth}{1pt}
 
 \pagebreak
