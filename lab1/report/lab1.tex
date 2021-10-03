@@ -141,9 +141,9 @@ $$R = \frac{1}{a} \implies \Delta R = \Delta a$$
   \centering
   \includegraphics[width=0.95\linewidth]{../Exercise1/lab_1_ex_1_plot_100k.png}   
   \begin{center}
-    $f(x) = (0.0102 \pm 0.0004) x + (0.0001 \pm 0.0064),\ \ \ \chi^2_{red} = 0.001,\ \ \ R = \frac{1}{a}\pm \Delta a = 98.1499 \pm 0.0004 \ k\Omega $
+    $f(x) = (0.0102 \pm 0.0004) x + (0.0001 \pm 0.0064),\ \ \ \chi^2_{red} = 0.0009,\ \ \ R = \frac{1}{a}\pm \Delta a = 98.1499 \pm 0.0004 \ k\Omega $
     
-    $f(x) = (0.0102 \pm 0.0003) x,\ \ \ \chi^2_{red} = 0.001,\ \ \ R = \frac{1}{a}\pm \Delta a = 98.1189 \pm 0.0003 \ k\Omega $
+    $f(x) = (0.0102 \pm 0.0003) x,\ \ \ \chi^2_{red} = 0.0008,\ \ \ R = \frac{1}{a}\pm \Delta a = 98.1189 \pm 0.0003 \ k\Omega $
     
   \end{center}  
   \caption{100 $k\Omega$ Data Curve Fitting}
@@ -155,9 +155,9 @@ $$R = \frac{1}{a} \implies \Delta R = \Delta a$$
   \centering
   \includegraphics[width=0.95\linewidth]{../Exercise1/lab_1_ex_1_plot_potentiometer.png}   
   \begin{center}
-    $f(x) = (0.0638 \pm 0.0011) x + (0.0020 \pm 0.0011),\ \ \ \chi^2_{red} = 0.020,\ \ \ R = \frac{1}{a} \pm \Delta a= 15.660 \pm 0.0011  \ k\Omega $
+    $f(x) = (0.0638 \pm 0.0011) x + (0.0020 \pm 0.0011),\ \ \ \chi^2_{red} = 0.0201,\ \ \ R = \frac{1}{a} \pm \Delta a= 15.660 \pm 0.0011  \ k\Omega $
     
-    $f(x) = (0.0641 \pm 0.0005) x,\ \ \ \chi^2_{red} = 0.026,\ \ \ R = \frac{1}{a}\pm \Delta a = 15.660 \pm 0.0005 \ k\Omega $
+    $f(x) = (0.0641 \pm 0.0005) x,\ \ \ \chi^2_{red} = 0.0257,\ \ \ R = \frac{1}{a}\pm \Delta a = 15.660 \pm 0.0005 \ k\Omega $
     
   \end{center}  
   \caption{Potentiometer Data Curve Fitting}
@@ -184,7 +184,7 @@ from the fact that in all cases we get low values of $\chi^2_{red}$.
 When data is fit to $f(x) = ax + b$, we note that the y-intercept of the line is not zero, although it is a really low value for all the cases. Hence 
 for this model the predicted graph does not pass through point (0,0). The reason for non-zero y-intercept can be attributed to
 the uncertainties in the measurements. When we force the linear model $f(x) = ax$, the $\chi_{red}^2$ values are little higher, for example,
-in Potentiometer case, it is 0.026 for $f(x) = ax$ against 0.020 for $f(x) = ax + b$. But in both the cases it is less than 1, giving more that 
+in Potentiometer case, it is 0.0257 for $f(x) = ax$ against 0.0201 for $f(x) = ax + b$. But in both the cases it is less than 1, giving more than
 a good fit. 
 
 The graph lines for both the models are indistinguishable on the plots, in both 100 $k\Omega$ and 
@@ -358,7 +358,7 @@ In this exercise we estimated the power law of a lightbulb in a circuit by measu
 
 The Python code for this exercise is divided into two files. statslab.py file contains utility methods
 which we will be frequently using in this course. lab\_1\_ex\_1\_code.py file contains the code which analyzes
-the data for 100 $k\Omega$ resistor, and Potentiometer.
+the data for 100 $k\Omega$ resistor and Potentiometer.
 
 \subsubsection{statslab.py}
 \noindent\rule{\textwidth}{1pt}

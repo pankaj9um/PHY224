@@ -37,11 +37,11 @@ def current_uncertainty(current):
 def linear_model_function_1(x, a, b):
     return a*x + b 
 
-#  linear model function f(x) = ax + b
+#  linear model function f(x) = ax
 def linear_model_function_2(x, a):
     return a*x
 
-# analyse the data file with linear model function 1
+# analyse the data file with linear model function 1, f(x) = ax + b
 def analyse_file_model_1(filename, title): 
     print("  Linear Model := f(x) = ax + b")
     
@@ -95,15 +95,17 @@ def analyse_file_model_1(filename, title):
             
     print("    Linear model slope (a) = %.4f" % popt[0])
     print("    Linear model y-intercept (b) := %.4f" % popt[1])
-    print("    Linear model slope (a) uncertainty := %.4f" % pstd[0])
-    print("    Linear model y-intercept (b) uncertainty := %.4f" % pstd[1])
+    print("    Linear model slope (a) uncertainty := +/- %.4f" % pstd[0])
+    print("    Linear model y-intercept (b) uncertainty := +/- %.4f" % pstd[1])
     print("    Estimated Resistance (1/a) = %.4f %s" % (1/popt[0], 
                                                       units["resistance"]))
 
-    print("    Uncertainty in resistance  := %.4f %s" % (pstd[0], 
+    print("    Uncertainty in resistance  := +/- %.4f %s" % (pstd[0], 
                                                        units["resistance"]))
-    print("    chi2reduced (Curve Fit) := %.3f" % chi2r_curve_fit)
+    print("    chi2reduced (Curve Fit) := %.4f" % chi2r_curve_fit)
         
+
+# analyse the data file with linear model function 2, f(x) = ax
 def analyse_file_model_2(filename, title): 
     print("  Linear Model := f(x) = ax")
     
@@ -153,13 +155,13 @@ def analyse_file_model_2(filename, title):
     utils.plot(plot_data, new_figure=False)
             
     print("    Linear model slope (a) = %.4f" % popt[0])
-    print("    Linear model slope (a) uncertainty := %.4f" % pstd[0])
+    print("    Linear model slope (a) uncertainty := +/- %.4f" % pstd[0])
     print("    Estimated Resistance (1/a) = %.4f %s" % (1/popt[0], 
                                                       units["resistance"]))
 
-    print("    Uncertainty in resistance  := %.4f %s" % (pstd[0], 
+    print("    Uncertainty in resistance  := +/- %.4f %s" % (pstd[0], 
                                                        units["resistance"]))
-    print("    chi2reduced (Curve Fit) := %.3f" % chi2r_curve_fit)
+    print("    chi2reduced (Curve Fit) := %.4f" % chi2r_curve_fit)
 
     plt.savefig("lab_1_ex_1_plot_%s.png" % filename[:-4].lower())
 
