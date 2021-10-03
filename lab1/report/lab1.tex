@@ -38,7 +38,7 @@
 
 \subsection{Abstract}
 
-Ohm's law explains the relationship between current flowing through resistors and voltage across them.
+Ohm's law explains the relationship between current flowing through a resistor and voltage applied across it.
 As per Ohm's law, the currrent flowing through a resistor is directly proportional to the
 voltage applied to its ends. So we have,
 
@@ -72,7 +72,7 @@ Voltage across the resistor.
 The relation we want to verify is $$I = \frac{V}{R}$$
 
 Here we take $V$, the voltage, as independent vaiable, and $I$, the current as dependent variable. Using the measured data
-we use the linear function $$f(x) = ax + b$$ to fit the data. 
+we use the linear model function $$f(x) = ax + b$$ to fit the data. 
 
 In above expression $x$ is the independent variable which we measure as Voltage, and $f(x)$ is the dependent varriable, which is 
 the Current.
@@ -103,7 +103,7 @@ was recorded using the multimeter.
 
 The uncertainty computation is done using the multimeter accuracy error ($0.75 \%$) and the error in 
 precision, which is the fluctuation in last digit of the multimeter ($0.01$). To account for the other
-external factors as described in the lab manual section 4.1\cite{lab-manual-ex1}, we assume $2\%$ error iin our measurements.
+external factors as described in the lab manual section 4.1\cite{lab-manual-ex1}, we assume $2\%$ error in our measurements.
 
 \subsection{Results}
 
@@ -183,7 +183,7 @@ $I \propto V^{0.5882}$, to the model power laws we estimated from our data:
 measuring voltage and current in a circuit with a lightbulb. 
 These theoretical power laws are graphically compared with 
 our model power laws. Furthermore, to determine the quality of our models, 
-we calculate the reduced Chi squared values of each model. We also confirmed 
+we calculate the $\chi^2_{red}$ values of each model. We also confirmed 
 that the theoretical voltage exponent values fell within the uncertainty range 
 of our estimated model exponent values. This analysis was done in Python with use 
 of the numpy, scipy and matplotlib modules.
@@ -233,7 +233,7 @@ $[a,b] = [0.57787573\ 2.20117518] \pm [0.00989301\ 0.02841001]$  for the linear 
 
 $[a,b] = [9.03211882\ 0.57799121] \pm [0.25674234\ 0.00989844]$ for the nonlinear model.
 
-The reduced Chi squared values for the nonlinear and linear model respectively are 0.19 and 0.19.
+The $\chi^2_{red}$ values for the nonlinear and linear model respectively are 0.19 and 0.19.
 
 The power laws we found between current and voltage, was, with our non-linear model: 
 
@@ -263,7 +263,7 @@ the error bars of each data point in the experiment. To solve this problem,
 we had to multiply the uncertainty by a factor of 2. The result is shown in 
 Figure \ref{power-law} and \ref{power-law-log} in the Results section.
 
-The reduced Chi squared values calculated for each model, see the Results section, are acceptable values. Thus, the spread (Euclidian distance) between our data points and our two model curves are low. This is good. However, the reduced Chi squared values are perhaps a bit too small. In our next experiment we will consider gathering more data to increase the reduced Chi Squared values of our models. We were taught in our labs that a reduced Chi squared value should ideally be approximately between 1 and 10, in experiments such as our own.
+The $\chi^2_{red}$ values calculated for each model, see the Results section, are acceptable values. Thus, the spread (Euclidian distance) between our data points and our two model curves are low. This is good. However, the $\chi^2_{red}$ values are perhaps a bit too small. In our next experiment we will consider gathering more data to increase the $\chi^2_{red}$ values of our models. We were taught in our labs that a $\chi^2_{red}$ value should ideally be approximately between 1 and 10, in experiments such as our own.
 
 As seen in Figure \ref{power-law} and \ref{power-law-log}, both models produce approximately the same curve, which fit our data well. However, the theoretical curves describing the power law, current vs. Voltage, for a tungsten lightbulb and a blackbody, both deviate somewhat from our data points and curves. We have programmed the theoretical curves to only differ from the non-linear model curve, by the value of the Voltage exponent.
 
@@ -283,7 +283,7 @@ causes the theoretical curves to deviate from our model curves.
 
 \subsection{Conclusions}
 
-In this exercise we estimated the power law of a lightbulb in a circuit by measuring current and voltage with uncertainties. We successfully followed the instructions for the experiment written in the exercise3.pdf document without issues. Our results show that both our models return approximately the same estimated power law. However, this power law deviates somewhat from the theoretical power laws for a radiating blackbody and a tungsten wire. We have plotted our data, our model and theoretical curves, and calculated each models reduced Chi squared values. 
+In this exercise we estimated the power law of a lightbulb in a circuit by measuring current and voltage with uncertainties. We successfully followed the instructions for the experiment written in the exercise3.pdf document without issues. Our results show that both our models return approximately the same estimated power law. However, this power law deviates somewhat from the theoretical power laws for a radiating blackbody and a tungsten wire. We have plotted our data, our model and theoretical curves, and calculated each models $\chi^2_{red}$ values. 
 
 \pagebreak
 
