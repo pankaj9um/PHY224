@@ -1,27 +1,16 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import math
+import scipy.stats as stats
 
 # import our utility method library from statslab.py
 import statslab as utils
 
-def count_uncertainty(rate):
-    return np.sqrt(rate)/20
-
-def count_uncertainty_logarithmic(rate):
-    err = count_uncertainty(rate)
-    return err/rate
-
-    
-#  model function
-def linear_model_function(x, a, b):
-    return a*x + b 
-
-def non_linear_model_function(x, a, b):
-    return b * np.power(math.e, x * a)
+def count_uncertainty(count):
+    return np.sqrt(count)
 
 filename = "Fiesta_30092021.txt"
-_, measured_count = utils.read_data(filename,
+sample_number, measured_count = utils.read_data(filename,
                                                 usecols=(0,1),
                                                 skiprows=2,
                                                 delimiter=None)
@@ -36,7 +25,12 @@ mean_background_count = np.mean(bg_measured_count)
 
 measured_count_corrected =  (measured_count - mean_background_count)
 
-# corrected rate
-measured_count_corrected_rate = measured_count_corrected / 20
+mu = np.mean(measured_count_corrected)
 
 plt.hist(measured_count, density=True)
+
+x = np.arange(stats.poisson.ppf(0.01, mu), 
+              stats.poisson.ppf(0.99, mu))
+              
+plt.plot(x, stats.poisson.pmf(x, mu), 'bo', ms=8, label='poisson pmf')
+
