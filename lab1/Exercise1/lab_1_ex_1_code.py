@@ -78,7 +78,8 @@ def analyse_file_model_1(filename, title):
     # fill in the plot details for curve fitted 
     # model in our plot_details object
     plot_data = utils.plot_details("Current Vs Voltage (%s)" % title)
-    plot_data.set_errorbar_legend("Measured Current with Uncertainty (%s)" % units["current"])
+    plot_data.set_errorbar_legend("Measured Current with \
+        Uncertainty (%s)" % units["current"])
     plot_data.fitted_curve_legend("Linear Fit for Ohm's Law ($f(x) = ax + b$)")
     plot_data.x_axis_label("Voltage (%s)" % units["voltage"])
     plot_data.y_axis_label("Current (%s)" % units["current"])
