@@ -32,5 +32,6 @@ plt.hist(measured_count, density=True)
 x = np.arange(stats.poisson.ppf(0.01, mu), 
               stats.poisson.ppf(0.99, mu))
               
-plt.plot(x, stats.poisson.pmf(x, mu), 'bo', ms=8, label='poisson pmf')
+plt.plot(x, stats.poisson.pmf(x, mu), ms=8, label='poisson pmf')
+plt.plot(x, stats.norm.pdf(x, loc=mu, scale=np.sqrt(mu)), label='gaussian pmf')
 
