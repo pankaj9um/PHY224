@@ -23,6 +23,11 @@ a = np.mean(Distance)
 b = 0.7
 c = (2*np.pi)/0.693
 
+#Calculating the spring constant based on these parameters
+spring_constant = m * c**2
+print("The spring constant of the string estimated in the undamped system",
+      "exercise, is:", spring_constant, "kg/s^2")
+
 #Offsetting time array
 Time = np.array([i-0.49 for i in Time])
 
@@ -37,6 +42,7 @@ ax.set_xlabel("Time in seconds (s)")
 ax.set_ylabel("Distance from sensor in centimeters (cm)")
 ax.set_title("Undamped oscillation. Distance vs. Time")
 ax.grid()
+ax.figure.savefig("Undamped oscillation. Distance vs. Time"+".png")
 plt.show()
 
 ##Damped Oscillation:
@@ -56,23 +62,53 @@ m_uncertainty = 0.1/1000 #kilograms
 
 #Specifying parameters for the model function
 a = np.mean(Distance)
-b = 0.7
-c = 0.2
-d = (2*np.pi)/0.693
+b = 1.64
+c = 0.0085
+d = (2*np.pi)/0.723
+
+#Calculating the spring constant based on these parameters
+spring_constant = m * d**2
+print("The spring constant of the string estimated in the damped system",
+      "exercise, is:", spring_constant, "kg/s^2")
 
 #Offsetting time array
-Time = np.array([i-0.49 for i in Time])[0:100]
-Distance = Distance[0:100]
+Time = np.array([i-6.630 for i in Time])#[4000:-1]
+Distance = Distance#[4000:-1]
 
 #Plotting data points and model curve
 fig = plt.figure(figsize=(8,6))
 ax = fig.add_subplot(1,1,1)
 ax.plot(Time, Distance, marker='.',lw=0.5,label='measured data')
-ax.plot(Time, model(Time,a,b,c),lw=1,label='fitted curve')
-ax.set_ylim((19.9, 21.75))
+ax.plot(Time, model(Time,a,b,c,d),lw=1,label='fitted curve')
+#ax.set_ylim((19.9, 21.75))
 ax.legend(loc=1)
 ax.set_xlabel("Time in seconds (s)")
 ax.set_ylabel("Distance from sensor in centimeters (cm)")
-ax.set_title("Undamped oscillation. Distance vs. Time")
+ax.set_title("Damped oscillation. Distance vs. Time")
 ax.grid()
+ax.figure.savefig("Damped oscillation. Distance vs. Time"+".png")
+plt.show()
+
+
+
+#Plotting data points and model curve
+fig = plt.figure(figsize=(8,6))
+
+ax = fig.add_subplot(2,1,1)
+ax.plot(Time, Distance, marker='.',lw=0.5,label='measured data')
+#ax.set_ylim((19.9, 21.75))
+ax.legend(loc=1)
+ax.set_ylabel("Distance (cm)")
+ax.set_title("Damped oscillation. Distance vs. Time")
+ax.grid()
+ax.figure.savefig("Damped oscillation. Distance vs. Time"+".png")
+
+bx = fig.add_subplot(2,1,2)
+bx.plot(Time, model(Time,a,b,c,d),lw=1,label='fitted curve')
+#ax.set_ylim((19.9, 21.75))
+bx.legend(loc=1)
+bx.set_xlabel("Time in seconds (s)")
+bx.set_ylabel("Distance (cm)")
+bx.grid()
+bx.figure.savefig("Damped oscillation. Distance vs. Time"+".png")
 plt.show()
