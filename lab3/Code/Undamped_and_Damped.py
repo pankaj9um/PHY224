@@ -52,6 +52,9 @@ plt.show()
 def model(t,a,b,c,d):
     return a+b*np.exp(-c*t)*np.sin(d*t)
 
+def env(t,a,b,c):
+    return a+b*np.exp(-c*t)
+
 #Importing data
 Time, Distance = F.read_data('damped_point_data.txt', None,2)
 
@@ -77,38 +80,32 @@ Distance = Distance#[4000:-1]
 
 #Plotting data points and model curve
 fig = plt.figure(figsize=(8,6))
-ax = fig.add_subplot(1,1,1)
+ax = fig.add_subplot(2,1,1)
 ax.plot(Time, Distance, marker='.',lw=0.5,label='measured data')
-ax.plot(Time, model(Time,a,b,c,d),lw=1,label='fitted curve')
+ax.plot(Time, env(Time,a,b,c),lw=1,label='fitted envelope')
 #ax.set_ylim((19.9, 21.75))
 ax.legend(loc=1)
 ax.set_xlabel("Time in seconds (s)")
 ax.set_ylabel("Distance from sensor in centimeters (cm)")
-ax.set_title("Damped oscillation. Distance vs. Time")
+ax.set_title("Damped oscillation. Distance vs. Time, envelope fit")
 ax.grid()
 ax.figure.savefig("Damped oscillation. Distance vs. Time"+".png")
-plt.show()
 
-
-
-#Plotting data points and model curve
-fig = plt.figure(figsize=(8,6))
-
-ax = fig.add_subplot(2,1,1)
+ax = fig.add_subplot(2,1,2)
 ax.plot(Time, Distance, marker='.',lw=0.5,label='measured data')
+ax.legend(loc=1)
+ax.set_title("Damped oscillation. Distance vs. Time, frequency fit")
+
+ax.plot(Time, model(Time,a,b,c,d),lw=1,label='fitted curve')
 #ax.set_ylim((19.9, 21.75))
 ax.legend(loc=1)
+ax.set_xlabel("Time in seconds (s)")
 ax.set_ylabel("Distance (cm)")
-ax.set_title("Damped oscillation. Distance vs. Time")
+ax.set_xlim(0,10)
 ax.grid()
 ax.figure.savefig("Damped oscillation. Distance vs. Time"+".png")
-
-bx = fig.add_subplot(2,1,2)
-bx.plot(Time, model(Time,a,b,c,d),lw=1,label='fitted curve')
-#ax.set_ylim((19.9, 21.75))
-bx.legend(loc=1)
-bx.set_xlabel("Time in seconds (s)")
-bx.set_ylabel("Distance (cm)")
-bx.grid()
-bx.figure.savefig("Damped oscillation. Distance vs. Time"+".png")
 plt.show()
+
+
+
+## simulation:
