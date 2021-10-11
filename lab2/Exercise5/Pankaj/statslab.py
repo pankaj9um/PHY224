@@ -1,3 +1,9 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+@author: Pankaj Patil
+"""
+
 import numpy as np
 import scipy.optimize as optim
 import matplotlib.pyplot as plt
@@ -93,8 +99,7 @@ def plot(plot_details, new_figure=True, error_plot=True):
     """Utility method to plot errorbar and line chart together, 
     with given arguments"""
     if new_figure:
-        fig  = plt.figure(figsize=(16, 10))
-        fig.tight_layout()
+        plt.figure(figsize=(16, 10))
         plt.style.use("seaborn-whitegrid")
             
     # plot the error bar chart
@@ -129,3 +134,21 @@ def plot(plot_details, new_figure=True, error_plot=True):
         
     plt.legend(loc=legend_pos)
 
+def plot_histogram(count_data, new_figure=True, 
+                   title="", xlabel="", ylabel="", legend_pos='upper left'):
+    """Utility method to plot histogram, with  densiity=True"""
+    if new_figure:
+        plt.figure(figsize=(16, 15))
+        plt.style.use("seaborn-whitegrid")
+            
+    # plot the data
+    count, bins, _ = plt.hist(count_data, bins=10, rwidth=0.95, density=True)
+
+    # legend and title
+    plt.title(title)
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+        
+    # set legend position
+    plt.legend(loc=legend_pos)
+    return count, bins
