@@ -8,6 +8,8 @@ import math
 import statslab as utils
 import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib.animation import FuncAnimation
+
 
 undamped_mass = 200 # in grams
 undamped_mass_uncertainty = 0.1 # in grams
@@ -19,7 +21,7 @@ def displacement_undamped(time):
     return y_0 + amplitude*np.sin(omega*time)
 
 
-undampled_filename = "data/undamped_point_data_set2.txt"
+undampled_filename = "../data/undamped_point_data_set2.txt"
 measured_time, measured_distance = utils.read_data(undampled_filename,
                                                 usecols=(0,1),
                                                 skiprows=2,
@@ -53,3 +55,35 @@ axes.set_ylim(19.75, 21.75)
 spring_constant = undamped_mass * omega ** 2
 
 print("spring constant %.4f g/s^2" % spring_constant)
+
+# animation
+y_i = amplitude
+v_i = 0
+
+# Create new Figure and an Axes which fills it.
+fig = plt.figure(figsize=(7, 7))
+plot, = plt.plot([1], [y_i], marker="o", markersize=20)
+
+print(plot)
+
+axes = plt.gca()
+axes.set_ylim(19.5, 22)
+axes.set_xticks([])
+
+def update(time):
+    global y_i, v_i
+    interval = 0.01 # seconds
+    y_i = y_i + interval * v_i
+    v_i = v_i - interval * (omega ** 2) * y_i
+
+    plot.set_ydata([y_0 + y_i])
+    
+
+x = np.linspace(0, 10, 1000)
+plt.plot(x, np.ones_like(x) * np.max(measured_distance))
+plt.plot(x, np.ones_like(x) * y_0)
+plt.plot(x, np.ones_like(x) * np.min(measured_distance))
+
+# Construct the animation, using the update function as the animation director.
+animation = FuncAnimation(fig, update, interval=0.01)
+plt.show()
