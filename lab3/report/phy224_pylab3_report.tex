@@ -79,6 +79,7 @@ Using the qualitative fit we obtained following values,
   \item[] $y_0=$ Initial Position = 20.71 $cm$
   \item[] $A=$ Amplitude = 0.70 $cm$
   \item[] $\Omega_0=$ Frequency of Oscillations = 9.07 $rad/s$
+  \item[] $T = 1/\Omega_0 =$ Period of Oscillations = 0.110 rad/s
 \end{itemize}
 
 Using the $\Omega_0$ value we obtain the spring constant $$k = m \Omega^2_0 = 16.44\ kg/s^2$$
@@ -149,6 +150,18 @@ Above equations were used to compute the simulated oscillation which are plotted
 
 The oscillatory motion of spring mass system is a sinusoidal graph, which is expected as it is a periodic motion.
 
+Our specified parameters produce a curve which fit our data very well.
+
+In the Distance and Velocity vs. Time plots, we see that the Euler-Cromer simulation fit our data over time much better than the Forward Euler simulation, which amplitude grows significantly in time. The amplitude of the plots should however be constant, if not be weakly decreasing, due to the small unavoidable damping of our system of experiment, as seen in the plot of measured data.
+
+As expected, we get elliptical phase plots for our measured and simulated Distance and Velocity, however, as we will see in the energy plot, the Forward Euler simulation grows in energy, which causes the phase space plot of the Forward Euler simulation ellipse to increase in radius over time. This also corresponds to the increase in amplitude in the position and velocity plot over time.
+
+Furthermore, as we can see from the total Energy plots, the total energy of the system is approximately conserved for the Euler-Cromer simulation, grows in time and is not conserved in the Forward Euler simulation (which is unphysical for our system), and is approximately conserved for our measured data when accounting for uncertainties in our measurements of the distance over time. In theory, total energy should be conserved, but the energy will oscillate to be in the form of potential and kinetic energy.
+
+The radius of the elliptical phase plots, correspond to the total energy of the system. When considering our total energy plots over time, it makes sense that the Euler Cromer and measured data plots give approximately stable phase ellipses, though the Forward Euler phase plot has increasing radius with time, as its energy is increasing over time. The reason the radius should be constant, is that the total energy should be constant. The y and v component of the phase plot radius oscillate in their contribution to the radius length, corresponding to how the total energy is conserved, but oscillates in the form of kinetic and potential energy.
+
+
+
 For the undamped spring-mass system, the mechanical energy is conserved and is given by,
 
 $$E_{tot} = \frac{1}{2}mv^2 + \frac{1}{2}ky^2$$
@@ -169,7 +182,7 @@ system in undamped case is given by Eqn (1). And that for damped system is give 
 system the energy of the system is conserved. Qualitative fit of the solution to equation of motion 
 enables us to compute the spring constant, in both the cases and it is found to be in agreement within experimental errors.
 The qualitative fit establishes that the motion of spring-mass system is sinusoidal with constant period. In 
-case of damping the amplitude of the motion decays exponentially.
+case of damping the amplitude of the motion decays exponentially. Furthermore, our two simulations using the Forward Euler and the Euler-Cromer methods, show that the Forward Euler method does not conserve energy, as the Euler-Cromer method approximately does. Therefore, the Euler-Cromer method is a better method for solving differential equations such as those we have worked with here.
 
 \pagebreak
 
