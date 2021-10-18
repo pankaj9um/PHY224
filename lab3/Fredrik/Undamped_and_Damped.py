@@ -23,6 +23,10 @@ a = np.mean(Distance)
 b = 0.7
 c = (2*np.pi)/0.693
 
+print("Initial Position = %.2f" % a)
+print("Amplitude = %.2f" % b)
+print("Frequency = %.2f" % c)
+
 #Calculating the spring constant based on these parameters
 spring_constant = m * c**2
 print("The spring constant of the string estimated in the undamped system",
@@ -68,6 +72,11 @@ a = np.mean(Distance)
 b = 1.64
 c = 0.0085
 d = (2*np.pi)/0.723
+
+print("Initial Position = %.2f" % a)
+print("Amplitude = %.2f" % b)
+print("Damping Coefficient = %.2f" % c)
+print("Frequency = %.2f" % d)
 
 #Calculating the spring constant based on these parameters
 spring_constant = m * d**2

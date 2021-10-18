@@ -49,8 +49,6 @@ plt.title("Distance Vs Time")
 axes = plt.gca()
 # axes.set_ylim(19.0, 21)
 
-
-
 predicted_displacement = displacement_damped(measured_time, gamma)
 
 plt.subplot(2, 1, 2)
