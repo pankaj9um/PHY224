@@ -65,12 +65,12 @@ In both the cases, we qualitatively fit the data to the above displacement equat
 
 \section{Methods, Materials and Experimental Procedure}
 
-We successfully followed the procedures as described by the TA for this experiment.
+We successfully followed the procedures as described by the TAs and lab manual \cite{lab-manual-ex4} for this experiment.
 
 \section{Results}
 \subsection{Undamped Spring Mass}
 
-In Appendix Figure \ref{undamped-plot}, we see the displacement data is 
+In Appendix Figure \ref{undamped-d-t-plot}, we see the displacement data is 
 plotted against time for the undamped case. The graph is a qualitative fit 
 of the equation describing the undamped oscillatory motion of spring-mass system.
 
@@ -79,16 +79,16 @@ Using the qualitative fit we obtained following values,
   \item[] $y_0=$ Initial Position = 20.71 $cm$
   \item[] $A=$ Amplitude = 0.70 $cm$
   \item[] $\Omega_0=$ Frequency of Oscillations = 9.07 $rad/s$
-  \item[] $T = 1/\Omega_0 =$ Period of Oscillations = 0.110 rad/s
+  \item[] $T = \frac{2\pi}{\Omega_0} =$ Period of Oscillations = 0.693 $s$
 \end{itemize}
 
 Using the $\Omega_0$ value we obtain the spring constant $$k = m \Omega^2_0 = 16.44\ kg/s^2$$
 
-The simulated data for the undamped case is plotted in Figure \ref{undamped-sim-plot}. 
+The simulated data for the undamped case is plotted in Figure \ref{undamped-sim-d-t-plot}, \ref{undamped-sim-v-t-plot}. 
 
 \subsection{Damped Spring Mass}
 
-In Appendix Figure \ref{damped-plot}, we see the displacement data is 
+In Appendix Figure \ref{damped-d-t-plot}, we see the displacement data is 
 plotted against time for the damped case. The graph is a qualitative fit 
 of the equation describing the damped oscillatory motion of spring-mass system.
 
@@ -98,15 +98,16 @@ Using the qualitative fit we obtained following values,
   \item[] $A=$ Amplitude = 1.64 $cm$
   \item[] $\gamma=$ Damping Coefficient = 0.01
   \item[] $\Omega_0=$ Frequency of Oscillations = 8.69 $rad/s$
+  \item[] $T = \frac{2\pi}{\Omega_0} =$ Period of Oscillations = 0.723 $s$ 
 \end{itemize}
 
 Using the $\Omega_0$ value we obtain the spring constant $$k = m \Omega^2_0 = 16.24\ kg/s^2$$
 
-The simulated data for the damped case is plotted in Figure \ref{damped-sim-plot}. 
+The simulated data for the damped case is plotted in Figure \ref{damped-sim-d-t-plot}, \ref{damped-sim-v-t-plot}, \ref{damped-sim-e-t-plot}. 
 
 \section{Discussion}
 
-For the undamped spring-mass system,
+We first derive the equation of motion for undamped spring-mass system as follows,
 
 \begin{itemize}
   \item[] $F_{spring} = -ky$ \ \ \ \ \ Hook's Law
@@ -116,14 +117,14 @@ For the undamped spring-mass system,
   \item[] $\implies m\frac{d^2y}{dt^2} + ky = 0$
 \end{itemize}
 
-We approximated that the motion of the system is purely one dimensional in only y-direction.
+Here we approximated that the motion of the system is purely one dimensional in only y-direction.
 
-The equation of motion can be written as,
+Above equation of motion can be written as,
 \begin{eqnarray*}
   \begin{split}
     &\frac{d^2y}{dt^2} = -\Omega_0^2 y \ \ \ \ \text{where } \Omega_0 = \sqrt{\frac{k}{m}} \\
     \implies &\frac{dv}{dy} = -\Omega_0^2 y \ \ \ \text{ where } \frac{d^2y}{dt^2} = \frac{dv}{dy},\ \ \ \  v = \frac{dy}{dt} \\
-    \implies &\frac{1}{\Delta t} [v(t+\Delta t) - v(t)] =  -\Omega_0^2 y \ \ \ \ \ \text{using Forward Euler method} \\
+    \implies &\frac{1}{\Delta t} [v(t+\Delta t) - v(t)] =  -\Omega_0^2 y  \\
     \implies &[v(t+\Delta t) - v(t)] =  -\Delta t \Omega_0^2 y\\
     \implies &v(t+\Delta t) =  v(t) -\Delta t \Omega_0^2 y\\
   \end{split}
@@ -132,12 +133,12 @@ And
 \begin{eqnarray*}
   \begin{split}
     &v = \frac{dy}{dt} \\
-    \implies &\frac{1}{\Delta t} [y(t+\Delta t) - y(t)] =  v(t) \ \ \ \ \ \text{using Forward Euler method} \\
+    \implies &\frac{1}{\Delta t} [y(t+\Delta t) - y(t)] =  v(t)  \\
     \implies &y(t+\Delta t) =  y(t) + \Delta t v(t)\\
   \end{split}
 \end{eqnarray*}
 
-Thus the Forward Euler methods gives us,
+Using above equations for derivative approximations, for the Forward Euler method, we get following equations,
 \begin{eqnarray*}
   \begin{split}
     y_{i+1} &= y_i + \Delta t v_i \\
@@ -146,7 +147,7 @@ Thus the Forward Euler methods gives us,
 \end{eqnarray*}
 for $i = 0, 1, 2, \dots$
 
-Above equations were used to compute the simulated oscillation which are plotted in Figure \ref{undamped-sim-plot}. 
+Above equations were used to compute the simulated oscillations which are plotted in Figure \ref{undamped-sim-d-t-plot}, \ref{undamped-sim-v-t-plot}. 
 
 The oscillatory motion of spring mass system is a sinusoidal graph, which is expected as it is a periodic motion.
 
@@ -160,20 +161,22 @@ Furthermore, as we can see from the total Energy plots, the total energy of the 
 
 The radius of the elliptical phase plots, correspond to the total energy of the system. When considering our total energy plots over time, it makes sense that the Euler Cromer and measured data plots give approximately stable phase ellipses, though the Forward Euler phase plot has increasing radius with time, as its energy is increasing over time. The reason the radius should be constant, is that the total energy should be constant. The y and v component of the phase plot radius oscillate in their contribution to the radius length, corresponding to how the total energy is conserved, but oscillates in the form of kinetic and potential energy.
 
-
-
 For the undamped spring-mass system, the mechanical energy is conserved and is given by,
 
 $$E_{tot} = \frac{1}{2}mv^2 + \frac{1}{2}ky^2$$
 
-Rearranging above give,
+Rearranging above gives,
 
 $$\frac{v^2}{k} + \frac{y^2}{m} = \frac{2E_{tot}}{mk}$$
 
 Which is an equation of an ellipse. Hence the phase plot of system is an ellipse.
 
+For damped oscillations, the equation of motion is given by Eqn. (2) in the Introduction. Using this equation, we get
+Euler-Cromer approximations for distance and velocity values. These approximations were used to 
+plot simulated data for damped oscillations in Figure \ref{damped-sim-d-t-plot}, \ref{damped-sim-v-t-plot}, \ref{damped-sim-e-t-plot}.
+
 In damped oscillations, as expected the amplitude of oscillation decays exponentially as is evident
-from Figure \ref{damped-plot}.
+from Figure \ref{damped-d-t-plot}. We also notice that the energy of system also decreases with time as expected, and is shown in Figure \ref{damped-sim-e-t-plot}.
 
 \section{Conclusions}
 
@@ -195,10 +198,14 @@ case of damping the amplitude of the motion decays exponentially. Furthermore, o
   \centering
   \includegraphics[width=0.95\linewidth]{../Fredrik/Undamped oscillation. Distance vs. Time.png}    
   \begin{center}
-    \emph{}
-  \end{center}
+    \begin{center}
+      Model Function : $y = y_0 + A\sin(\Omega_0 t)$ \\
+      $y_0$ = Initial Position  = 20.71 cm \\
+      $A$ = Amplitude = 0.70 cm\\
+      $\Omega_0$ = Frequency of  Oscillations = $2\pi / 0.693$ $rad/s$ \\      
+    \end{center}  \end{center}
   \caption{Undamped Oscillations: Distance vs. Time}
-  \label{undamped-plot}
+  \label{undamped-d-t-plot}
 \end{figure}
 
 \begin{figure}[H]
@@ -208,7 +215,7 @@ case of damping the amplitude of the motion decays exponentially. Furthermore, o
     \emph{}
   \end{center}
   \caption{Undamped Oscillations: Velocity vs. Distance}
-  \label{undamped-plot}
+  \label{undamped-v-d-plot}
 \end{figure}
 
 \begin{figure}[H]
@@ -218,7 +225,7 @@ case of damping the amplitude of the motion decays exponentially. Furthermore, o
     \emph{}
   \end{center}
   \caption{Undamped Oscillations: Total Energy vs. Time (zoomed in)}
-  \label{undamped-sim-plot}
+  \label{undamped-e-t-z-plot}
 \end{figure}
 
 \begin{figure}[H]
@@ -228,26 +235,80 @@ case of damping the amplitude of the motion decays exponentially. Furthermore, o
     \emph{}
   \end{center}
   \caption{Undamped Oscillations: Total Energy vs. Time}
-  \label{undamped-sim-plot}
+  \label{undamped-e-t-plot}
 \end{figure}
 
-\subsection{Plots For Damped Spring-Mass  System}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.95\linewidth]{../Fredrik/Damped oscillation. Distance vs. Time.png}    
+  \includegraphics[width=0.95\linewidth]{../Fredrik/Simulated Undamped Oscillation. Distance vs. Time.png}    
   \begin{center}
     \emph{}
   \end{center}
-  \caption{Damped Oscillations}
-  \label{damped-plot}
+  \caption{Undamped Oscillations: Simulated Undamped Oscillation. Distance vs. Time}
+  \label{undamped-sim-d-t-plot}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\linewidth]{../Fredrik/Simulated Undamped Oscillation. Velocity vs. Time.png}    
+  \begin{center}
+    \emph{}
+  \end{center}
+  \caption{Undamped Oscillations: Simulated Undamped Oscillation. Velocity vs. Time}
+  \label{undamped-sim-v-t-plot}
+\end{figure}
+
+\subsection{Plots For Damped Spring-Mass System}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\linewidth]{../Pankaj/lab3_damped_distance_vs_time.png}    
+  \begin{center}
+    Model Function : $y = y_0 + A e^{-\gamma t} \sin(\Omega_0 t)$ \\
+    $y_0$ = Initial Position  = 19.94 cm \\
+    $A$ = Amplitude = 1.64 cm\\
+    $\gamma$ = Damping Coefficient = 0.0085 \\
+    $\Omega_0$ = Frequency of  Oscillations = $2\pi / 0.723$ $rad/s$ \\      
+  \end{center}
+  \caption{Damped Oscillations: Distance vs. Time}
+  \label{damped-d-t-plot}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\linewidth]{../Pankaj/lab3_damped_sim_distance_vs_time.png}    
+  \begin{center}
+    \emph{}
+  \end{center}
+  \caption{Damped Oscillations: Distance vs. Time (Simulated)}
+  \label{damped-sim-d-t-plot}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\linewidth]{../Pankaj/lab3_damped_sim_velocity_vs_time.png}    
+  \begin{center}
+    \emph{}
+  \end{center}
+  \caption{Damped Oscillations: Velocity vs. Time (Simulated)}
+  \label{damped-sim-v-t-plot}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\linewidth]{../Pankaj/lab3_damped_sim_energy_vs_time.png}    
+  \begin{center}
+    \emph{}
+  \end{center}
+  \caption{Damped Oscillations: Energy vs. Time (Simulated)}
+  \label{damped-sim-e-t-plot}
 \end{figure}
 
 \pagebreak
 
-\subsection{Python Code}
+\subsection{Python Code: Undamped Oscillations}
 
 The Python code for this exercise is divided into two files. Functions.py file contains utility methods
-which we will be frequently using in this course. Undamped\_and\_Damped.py file contains the code which analyzes
+which we will be frequently using in this course. Undamped.py file contains the code which analyzes
 the data.
 
 \subsubsection{Functions.py}
@@ -255,9 +316,31 @@ the data.
 \verbatiminput{../Fredrik/Functions.py}
 \noindent\rule{\textwidth}{1pt}
 
-\subsubsection{Functions.py}
+\pagebreak
+
+\subsubsection{Undamped.py}
 \noindent\rule{\textwidth}{1pt}
-\verbatiminput{../Fredrik/Undamped_and_Damped.py}
+\verbatiminput{../Fredrik/Undamped.py}
+\noindent\rule{\textwidth}{1pt}
+
+\pagebreak
+
+\subsection{Python Code: Damped Oscillations}
+
+The Python code for this exercise is divided into two files. statslab.py file contains utility methods
+which we will be frequently using in this course. lab\_3\_damped\_code.py file contains the code which analyzes
+the data.
+
+\subsubsection{statslab.py}
+\noindent\rule{\textwidth}{1pt}
+\verbatiminput{../Pankaj/statslab.py}
+\noindent\rule{\textwidth}{1pt}
+
+\pagebreak
+
+\subsubsection{lab\_3\_damped\_code.py}
+\noindent\rule{\textwidth}{1pt}
+\verbatiminput{../Pankaj/lab_3_damped_code.py}
 \noindent\rule{\textwidth}{1pt}
 
 \pagebreak
