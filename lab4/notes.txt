@@ -1,0 +1,52 @@
+1. What does the Autoset/autoscale button do?
+It tries to adjust the settings to show the best image of the signal
+
+2. How many horizontal grid boxes are there on the oscilloscope screen?
+8
+
+3. How many vertical grid boxes are there on the oscilloscope?
+10
+
+4. For each channel there are two dials, what do the bigger dial do?
+adjusts the scale (in YT mode)
+
+5. For each channel there are two dials, what do the smaller dial do?
+adjusts the offset
+
+6. What are you doing in exercise A?
+When adjusting the input signal by offset 2 divisions, by adjusting the trigger knob, we offset the signal appearing on the screen by a quarter wavelength.
+
+When the trigger is outside of waveform or above the peak value, the monitor shows moving wave in time. Moving the trigger below the peak value of sine wave freezes the wave in time for observation.
+
+Because of the delay in the recording, the frozen wave is offset from the zero value, and the wave shown is the first wave which hits the trigger value.
+
+On DC coupling setting, the oscilloscope passes through all part of the signal, DC and AC. 
+
+On AC coupling setting, it will remove the DC part from the waveform, and shows only the time varying components of the signal.
+
+So in order to check the stability of DC signal, we will use the AC coupling setting to remove the strict DC part from the signal and monitor the time varying component.
+
+7. Under what conditions would you use the oscilloscope on the AC position?
+when measuring small AC oscillations/signals around a large DC offset
+
+8. What frequency sine wave is the signal generator providing?
+10 kHz
+
+9. How many grid boxes are needed to show an entire wave on the oscilloscope?
+Depending on the scale the number of grid boxes needed to show entire wave change.
+
+For our setting,
+
+To display one full wave, we need total 12 grid boxes. 
+
+4 grid boxes to cover the amplitude,
+
+3 to cover the wavelength.
+
+
+
+
+
+
+
+
