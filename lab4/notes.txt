@@ -43,6 +43,30 @@ To display one full wave, we need total 12 grid boxes. 
 
 3 to cover the wavelength.
 
+10. When you adjust the DC offset up in the DC coupling mode which way does the signal move vertically?
+down
+
+11. When you adjust the DC offset up in the AC coupling mode which way does the signal move vertically?
+down
+
+12. In the AC coupling mode, the oscilloscope removes data at frequencies
+30
+
+13. What are you doing in exercise B?
+We are using external signal to trigger the oscilloscope. 
+
+Because of the time delay there is an offset in the true trigger value and the mean of high and low trigger values.
+
+19.
+
+The signal on the screen corresponds to the signal at fixed time which first intersects with the trigger level.
+
+When we adjust the point on intersection changes and we see different  time slices for the signal, moving forward and backwards in time.
+
+
+
+
+
 
 
 
