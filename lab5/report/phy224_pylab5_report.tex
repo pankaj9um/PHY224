@@ -122,7 +122,7 @@ Therefore, the average internal resistance of the power supply with uncertainty,
 estimated from these measurements are:
 $R_{internal\ (power\ supply)} = 48.23 \pm 1.1045\ Ohm$ (uncertainty = $2.209/\sqrt{N}$).
 We will associate a similar uncertainty to our estimate of the battery’s internal resistance, as that experiment were performed similarly to those with the power supply:
-$R_{internal\ (battery)} = 0.77 \pm 2.2\ Ohm$.
+$R_{internal\ (battery)} = 0.77 \pm 1.88\ Ohm$.
 This will be our estimate of the internal resistance of the power supply and battery.
 
 Furthermore, averaging and taking the standard deviation of each ammeter resistance
@@ -135,6 +135,54 @@ Run the python script in the appendix to get all the different currents through 
 
 Below in Figure [1]-[5], we see our data from the experiments plotted as points with corresponding error bars. Furthermore, we see the curve of our model fitted to the data, as described in the introduction. 
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\linewidth]{../code/Fredrik/6V battery lab5_voltage_vs_current.png}    
+  \begin{center}
+    \begin{center}
+      Model Function : $V = V_{\infty} - RI$ \\
+      $V_{\infty} = 6.31 \pm 0.05 $ V\\
+      $R = 0.77 \pm 1.88$ Ohm\\
+    \end{center}  \end{center}
+  \caption{6V Battery: Voltage vs. Current}
+  \label{battery-v-i}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\linewidth]{../code/Fredrik/Power supply 6V lab5_voltage_vs_current.png}    
+  \caption{Power Supply 6V (Voltage vs Current)}
+  \label{ps-6}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\linewidth]{../code/Fredrik/Power supply 10V lab5_voltage_vs_current.png}    
+  \caption{Power Supply 10V (Voltage vs Current)}
+  \label{ps-10}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\linewidth]{../code/Fredrik/Power supply 15V lab5_voltage_vs_current.png}    
+  \caption{Power Supply 15V (Voltage vs Current)}
+  \label{ps-15}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\linewidth]{../code/Fredrik/Power supply 20V lab5_voltage_vs_current.png}    
+  \caption{Power Supply 20V (Voltage vs Current)}
+  \label{ps-20}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\linewidth]{../code/Fredrik/Estimated Max Current vs. V_inf based on our linear models.png}    
+  \caption{6V Battery: Maximum Current vs. $V_{\infty}$ }
+  \label{ps-max-c}
+\end{figure}
+
 \section{Discussion}
 
 The $\chi_{red}^2$ values we found were very low. This means that our models fit our data very well. 
@@ -145,7 +193,7 @@ this exercise asked for data from four resistors, while we used six.
 Thus, in our case, the small $\chi_{red}^2$ values is a good sign, as it means that 
 we have good linear data for which our model fits nicely. Furthermore,
  both models are well within the uncertainties of our measurements, 
- see Figure [1] to [5] in the Appendix.
+ see Figure [1] to [5] in the Results section.
 As we can see from the current passing through the voltmeter, 
 it is very small in comparison to the measured total current in the circuit, see the results section. 
 This is a good sign, as ideally no current should pass through the voltmeter. 
@@ -203,7 +251,7 @@ for voltage by the small internal battery of the voltmeter.
 
 \textbf{Question 4}
 
-See plots in the Appendix to see the estimated relationship between 
+See plots in the Results section to see the estimated relationship between 
 the current and voltage of the circuit according to our data. For the range 
 of resistors for which we utilized in our experiments with the power supply, 
 the current and voltage followed a linear relationship. However, according to 
@@ -217,7 +265,7 @@ if the voltage current-relationship is non-linear at higher currents:
 At $I_{max}$, V=0, thus according to the equation from the introduction, $V = V_{\infty} – R_{internal}I$
 So, $I_{max} = V_{\infty}/R_{internal}$.
 We then get an increasing relationship between $V_{\infty}$ and $I_{max}$, see Figure [6] in 
-the Appendix.
+the Results section.
 
 
 \section{Conclusions}
@@ -235,59 +283,6 @@ flowing through the voltmeter. Finally, we have answered the questions of the la
 \appendix
 
 \section{Appendix}
-
-\subsection{Plots For 6V Battery}
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.95\linewidth]{../code/Fredrik/6V battery lab5_voltage_vs_current.png}    
-  \begin{center}
-    \begin{center}
-      Model Function : $V = V_{\infty} - RI$ \\
-      $V_{\infty} = 6.31$ V\\
-      $R = 0.77$ Ohm\\
-    \end{center}  \end{center}
-  \caption{6V Battery: Voltage vs. Current}
-  \label{battery-v-i}
-\end{figure}
-
-\subsection{Plots For Power Supply}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.95\linewidth]{../code/Fredrik/Power supply 6V lab5_voltage_vs_current.png}    
-  \caption{Power Supply 6V (Voltage vs Current)}
-  \label{ps-6}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.95\linewidth]{../code/Fredrik/Power supply 10V lab5_voltage_vs_current.png}    
-  \caption{Power Supply 10V (Voltage vs Current)}
-  \label{ps-10}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.95\linewidth]{../code/Fredrik/Power supply 15V lab5_voltage_vs_current.png}    
-  \caption{Power Supply 15V (Voltage vs Current)}
-  \label{ps-15}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.95\linewidth]{../code/Fredrik/Power supply 20V lab5_voltage_vs_current.png}    
-  \caption{Power Supply 20V (Voltage vs Current)}
-  \label{ps-20}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.95\linewidth]{../code/Fredrik/Estimated Max Current vs. V_inf based on our linear models.png}    
-  \caption{6V Battery: Maximum Current vs. $V_{\infty}$ }
-  \label{ps-max-c}
-\end{figure}
-
-\pagebreak
 
 \subsection{Python Code: Battery 6V}
 

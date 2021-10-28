@@ -33,8 +33,9 @@ popt, pstd = utils.fit_data(model_function,
                           measured_voltages, 
                           voltage_errors)
 
-print("V_infty = %.2f V" %  popt[0])
-print("R_internal = %.2f ohm" %  (popt[1] * np.power(10, 6)))
+print("V_infty = %.2f +/- %.2f V" %  (popt[0], pstd[0]))
+print("R_internal = %.2f +/- %.2f ohm" %  ((popt[1] * np.power(10, 6), 
+                                            (pstd[1] * np.power(10, 6)))))
 
 currrent_data_for_prediction = np.linspace(measured_currents[0], 
                                             measured_currents[-1], 1000)
