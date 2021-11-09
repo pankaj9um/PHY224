@@ -10,11 +10,15 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-frequency_uncertainity = 1#10**6 # 1MHz
+frequency_uncertainity = 1 #1MHz
 e = 1.602 * 10 ** (-19)
 m = 9.109 * 10 ** (-31)
 
-frequency_multiplier = 1#10**6 # MHz
+mu = 4*math.pi* (10**(-7)) 
+n = 320
+R = 70
+
+frequency_multiplier = 1 #MHz
 
 def model_function(currrent, slope):
     return currrent * slope
@@ -37,9 +41,6 @@ measured_currents = measured_currents/2
 measured_frequency = measured_frequency * frequency_multiplier # conver to SI units
 frequency_errors = np.ones_like(measured_frequency) * frequency_uncertainity
 
-mu = 4*math.pi* (10**(-7)) 
-n = 320
-R = 70
 measured_magnetic_field = (4/5)**(3/2) * mu * n * measured_currents / R
 
 popt, pstd = utils.fit_data(model_function, 
@@ -57,7 +58,7 @@ c_max = np.max(measured_magnetic_field)
 gamma_measured = 2*math.pi*measured_frequency/measured_magnetic_field
 g_measured = gamma_measured / (e / (2 * m)) * 10 ** 6
 std_gamma = np.std(g_measured)
-print("std of gamma = %.2f", std_gamma)
+print("std of gamma = %.2f" % std_gamma)
 
 magnetic_field_for_prediction = np.linspace(c_min, c_max, 1000)
 
