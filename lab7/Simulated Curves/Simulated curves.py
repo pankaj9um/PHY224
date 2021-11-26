@@ -9,6 +9,8 @@ Created on Thu Nov 25 16:47:07 2021
 import numpy as np
 import matplotlib.pyplot as plt
 
+plt.style.use("seaborn-whitegrid")
+
 #Defining constants
 R_RC_B = 470*10**3 #Ohm
 C_RC_B = 1*10**-6 #Ferad
@@ -38,40 +40,53 @@ V_LR_W = V0_LR_W*np.exp(-t_LR_W/Tau_LR_W)
 
 #we then plot the corresponding curves of exponential decay or increase
 #For the RC circuit with battery:
-fig = plt.figure(figsize=(9,3))
-ax = fig.add_subplot(1,1,1)
+fig = plt.figure(figsize=(16,10))
+ax = fig.add_subplot(1,2,1)
+ax.axis('off')
+ax.set_title("Observed Exponetial Decay \nFor RC Curcuit with Battery")
+ax.grid()
+
+ax = fig.add_subplot(1,2,2)
 ax.set_title("Exponential Decay of the Potensial Over the Resistor"+
              "\n For an RC Curcuit with a Battery")
 ax.plot(t_RC_B,V_RC_B,c='r', ls='', marker='.',lw=1)
 ax.set_xlabel("Time in seconds (s)")
 ax.set_ylabel("Voltage (V)")
-ax.grid()
-ax.figure.savefig("Exponential Decay of the Potensial Over the Resistor"+
+ax.figure.savefig("Exponential Decay of the Potential Over the Resistor"+
                   "For an RC Curcuit with a Battery"+".png")  
 
 #For the RC cirvuit with wave generator
-fig = plt.figure(figsize=(5,3))
-ax = fig.add_subplot(1,1,1)
+fig = plt.figure(figsize=(16,10))
+ax = fig.add_subplot(1,2,1)
+ax.axis('off')
+ax.set_title("Observed Exponetial Decay \nFor RC Curcuit with Wave Generator")
+ax.grid()
+
+ax = fig.add_subplot(1,2,2)
 ax.set_title("Exponential Decay of the Potensial Over the Resistor"+
              "\n For an RC Curcuit with the Wave Generator")
 ax.plot(t_RC_W,V_RC_W,c='r', ls='', marker='.',lw=1)
 ax.set_xlabel("Time in seconds (s)")
 ax.set_ylabel("Voltage (V)")
-ax.grid()
-ax.figure.savefig("Exponential Decay of the Potensial Over the Resistor"+
+ax.figure.savefig("Exponential Decay of the Potential Over the Resistor"+
                   "For an RC Curcuit with the Wave Generator"+".png")  
 
 
 #For the LR circuit with wave generator
-fig = plt.figure(figsize=(3,4))
-ax = fig.add_subplot(1,1,1)
-ax.set_title("Exponential Increase of the Potensial Over the Resistor"+
+fig = plt.figure(figsize=(16,10))
+ax = fig.add_subplot(1,2,1)
+ax.axis('off')
+ax.set_title("Observed Exponetial Increase \nFor LR Curcuit with Wave Generator")
+ax.grid()
+
+ax = fig.add_subplot(1,2,2)
+ax.set_title("Exponential Increase of the Potential Over the Resistor"+
              "\n For an LR Curcuit with the Wave Generator")
 ax.plot(t_LR_W,10-V_LR_W,c='r', ls='', marker='.',lw=1)
 ax.set_xlabel("Time in seconds (s)")
 ax.set_ylabel("Voltage (V)")
 ax.grid()
-ax.figure.savefig("Exponential Decay of the Potensial Over the Resistor"+
+ax.figure.savefig("Exponential Increase of the Potensial Over the Resistor"+
                   "For an LR Curcuit with the Wave Generator"+".png") 
 
 
