@@ -85,8 +85,7 @@ ax.set_title("Exponential Increase of the Potential Over the Resistor"+
 ax.plot(t_LR_W,10-V_LR_W,c='r', ls='', marker='.',lw=1)
 ax.set_xlabel("Time in seconds (s)")
 ax.set_ylabel("Voltage (V)")
-ax.grid()
-ax.figure.savefig("Exponential Increase of the Potensial Over the Resistor"+
+ax.figure.savefig("Exponential Increase of the Potential Over the Resistor"+
                   "For an LR Curcuit with the Wave Generator"+".png") 
 
 
