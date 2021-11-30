@@ -95,6 +95,7 @@ $$\tau\ (measured) = 5.0 \times 10^{-5}\ s$$
 $$L/R = 9.2 \times 10^{-5}\ s$$
 
 The estimated value of the time constant, estimated from our measurements, matches the theoretical value $L/R$ in order of magnitude. 
+All these three theoretical curves matches our measured curves well, and as mentioned, gives time constants within an order of magnitude of the measured values.
 
 \subsection*{C. AC Sine Wave}
 
@@ -141,6 +142,22 @@ And the precision of measurement of $V_R$ is given by $\frac{1}{10} \times 100 =
 In the LCR circuit for lower frequencies, the phase difference is negative. As the frequency is
 increased, the phase gradually shifts to positive values. The resonance frequency can be estimated to be around 1 kHz. 
 Furthermore, in accordance with theory, $\omega_r = 1/\sqrt{LC} = 1.4$ kHz.
+
+From our LC circuit, we saw that we still had some resistance within the circuit. This is because an LC circuit would 
+be an idealization of the actual LCR circuit for which we was really testing. Though the resistance was small, there was
+some internal resistance within the capacitor and the inductor in our circuit, along with some internal resistance within the Oscilloscope.
+Thus we never managed to get data from a pure LC circuit. If one were to make a circuit diagram of our "LC" setup, using only ideal resistors, 
+ideal capacitors, ideal inductors and an ideal oscilloscope, one would have to draw the LC circuit diagram for which can be found in the manual,
+along with a small resistor in series right behind or right before the capacitor, the inductor and the oscilloscope, to account for their internal resistance.
+In fact, the inductor does actually have some small capacitance as well, from acumulated charge between each wiring. Thus a small capasitor 
+would need to be drawn in the circuit diagram in series with the inductor as well, to capture the full picture of our imperfect LC circuit.
+
+Given the capacitance, the inductance and the resistance within our LCR circuit, one can calculate the circuits natural resonance frequency.
+Though driving the circuit with our wave generator at this natural frequency would give the largest resonance, one can also drive the circuit at all 
+natural number multiples of this natural frequency and get some resonance. These are the overtones of the fundamental note, the natural frequency. 
+This is similar to how one with musical instruments can achieve resonance on a string or in the air within a flute by playing the natural frequency or any 
+of the overtones associated to the natural frequency of a string on a violin, a guitar, or associated to the pipes of a flute or an organ.
+
 
 \pagebreak
 
