@@ -37,7 +37,9 @@ datasets = [
          np.sqrt( R ** 2 + np.power(w * L - 1.0 / (w * C), 2 ) )
     }
 ]
-
+    
+voltage_uncertainty = 0.1 #Volts
+phase_uncertainty = 10 #degrees
 
 def analyze_data(data):
     print(data["name"])
@@ -51,6 +53,8 @@ def analyze_data(data):
 
     # z = v/v_r * R
     z_measured = v_total / v_r * data["R"]
+    z_errors = z_measured * np.sqrt( 
+        (voltage_uncertainty/v_total) ** 2 + (voltage_uncertainty/v_r) ** 2)
     
     # z = sqrt((omega L - 1/omega C)^2 + R^2)
     z_theory = data["impedance_func"](omega, data["R"], data["C"], data["L"])
@@ -58,11 +62,19 @@ def analyze_data(data):
     fig = plt.figure(figsize=(16,10))
     fig.tight_layout()
     
-    plt.subplot(2,2,1)
-    plt.semilogx(frequency,z_measured)
-    
+    plt.subplot(2,2,1)    
+    plt.errorbar(frequency,
+             z_measured, 
+             yerr=z_errors, 
+             marker="o",
+             c="r",
+             label="Z (Measured) $\Omega$",
+             capsize=2,
+             ls="")
     plt.xlabel("Frequency (Hz)")
     plt.ylabel("Z (Measured) $\Omega$")
+    plt.semilogx()
+
 
     plt.subplot(2,2,2)
     plt.semilogx(frequency, z_theory)
@@ -70,11 +82,19 @@ def analyze_data(data):
     plt.ylabel("Z (Theoretical)  $\Omega$")
 
     plt.subplot(2,1,2)
-    plt.semilogx(frequency, phase)
+    plt.errorbar(frequency,
+             phase, 
+             yerr=phase_uncertainty, 
+             marker="o",
+             c="g",
+             label="Phase (Measured) $^\circ$",
+             capsize=2,
+             ls="")
     plt.xlabel("Frequency (Hz)")
     plt.ylabel("Phase $^\circ$")
     plt.title(data["name"], y=-0.5)
-    
+    plt.semilogx()
+
     plt.savefig("%s.png" % data["name"], bbox_inches='tight')
     
     
