@@ -10,6 +10,10 @@ import numpy as np
 mu_0 = 4*np.pi*10**(-7)
 n = 75 # number of turn of the coil.
 R = 0.15 # 15 cm radius of the coil.
+uncertainty_current = 0.1 # 0.1 Ampere
+uncertainty_radius = 0.005 # 0.5 cm
+V_constant = 125.0 # Volts
+I_constant = 0.964 # Ampere
 
 # characteristic of coil dimension
 k = 1/np.sqrt(2)*(4/5)**(3/2)*mu_0*n/R
@@ -20,24 +24,24 @@ r, measured_currents = utils.read_data("../../data/Changing_current.csv",
                 usecols=(0, 1),
                 skiprows=2)
 
-r = r * 10 ** (-2) # to meters
-r_1 = 1/r
-B_c = (4/5)**(3/2)*mu_0*n/R*measured_currents
+r = r / 100 # to meters
+r_1 = 1/r # reciprocal of radius
+B_c = (4/5)**(3/2)*mu_0*n/R*measured_currents # coil magnetic  field
 
-V_constant = 125.0 # Volts
 
 # linear fitting equation
 def model_function_Be(x, a, b):
     return  a*x + b
 
-B_c_errors = np.ones_like(measured_currents) * (4/5)**(3/2)*mu_0*n/R * 0.1
+B_c_errors = np.ones_like(measured_currents) \
+    * (4/5)**(3/2)*mu_0*n/R * uncertainty_current
 
 popt, pstd = utils.fit_data(model_function_Be, 
                             r_1, 
                             B_c, 
                             B_c_errors)
 
-# get the y intercept
+# get the y intercept for external magnetic field
 B_e = -popt[1]
 print("External Magnetic Field B_e = %.5f +/- %.5f Tesla" % (B_e, pstd[1]))
 
@@ -54,6 +58,7 @@ plt.xlabel("$1/r$")
 plt.ylabel("$B_c$")
 plt.title("Plot of $B_c$ vs $1/r$")
 
+# plot the measured data error bars
 plt.errorbar(r_1,
              B_c, 
              yerr=B_c_errors, 
@@ -65,17 +70,16 @@ plt.errorbar(r_1,
 plt.legend()
 plt.savefig("Coil B vs r_1.png", bbox_inches='tight')
 
-
+# computation of e/m
 # work with constant current data
 r, measured_voltages = utils.read_data("../../data/Changing_voltage.csv",
                                        usecols=(0, 1),
                                        skiprows=2)
 
-r = r * 10 ** (-2) # to meters
-r_1 = 1/r
-r_1_errors = np.ones_like(r_1) * 0.005 / (r ** 2)
+r = r / 100 # to meters
+r_1 = 1/r # reciprocal of radius
+r_1_errors = np.ones_like(r_1) * uncertainty_radius / (r ** 2)
 
-I_constant = 0.964 # Ampere
 I_0 = B_e / k
 
 # linear fitting equation
