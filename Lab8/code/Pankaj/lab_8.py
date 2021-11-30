@@ -75,7 +75,7 @@ r = r * 10 ** (-2) # to meters
 r_1 = 1/r
 r_1_errors = np.ones_like(r_1) * 0.005 / (r ** 2)
 
-I_constant = 0.964 # Volts
+I_constant = 0.964 # Ampere
 I_0 = B_e / k
 
 # linear fitting equation
