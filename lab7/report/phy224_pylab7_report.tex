@@ -66,7 +66,7 @@ AC circuits in the manual were applicable to old Oscilloscopes.
 \subsection*{A. Transient Decay (RC)}
 
 \begin{figure}[H]
-  \centerline{\includegraphics[width=0.75\textwidth]{../Simulated Curves/RC_B-mod.png}}
+  \centerline{\includegraphics[width=0.5\textwidth]{../Simulated Curves/RC_B-mod.png}}
   \caption{Transient Potential Decay in RC circuit (Measurement Vs. Simulation)}
   \label{Combined_RC_B}
 \end{figure}
@@ -77,7 +77,7 @@ The estimated value of the time constant, estimated from our measurements, match
 \subsection*{B. DC Square Wave}
 
 \begin{figure}[H]
-  \centerline{\includegraphics[width=0.75\textwidth]{../Simulated Curves/RC_W-mod.png}}
+  \centerline{\includegraphics[width=0.5\textwidth]{../Simulated Curves/RC_W-mod.png}}
   \caption{Exponential Potential Decay in RC circuit (Measurement Vs. Simulation)}
   \label{Combined_RC_W}
 \end{figure}
@@ -87,7 +87,7 @@ $$RC = 1.1 \times 10^{-5}\ s$$
 The estimated value of the time constant, estimated from our measurements, matches the theoretical value $RC$ in order of magnitude. 
 
 \begin{figure}[H]
-  \centerline{\includegraphics[width=0.9\linewidth]{../Simulated Curves/LR_W-mod.png}}
+  \centerline{\includegraphics[width=0.75\linewidth]{../Simulated Curves/LR_W-mod.png}}
   \caption{Exponential Potential Increase in LR circuit (Measurement Vs. Simulation)}
   \label{Combined_LR_W}
 \end{figure}
@@ -96,6 +96,24 @@ $$L/R = 9.2 \times 10^{-5}\ s$$
 
 The estimated value of the time constant, estimated from our measurements, matches the theoretical value $L/R$ in order of magnitude. 
 All these three theoretical curves matches our measured curves well, and as mentioned, gives time constants within an order of magnitude of the measured values.
+\\\\
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=.9\linewidth]{../data/20211116_110612-mod.jpg}
+    \caption{LC Circuit with Square Wave}
+  \end{subfigure}%
+  \begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=.9\linewidth]{../data/20211116_110834-mod.jpg}
+    \caption{LC Circuit with Square Wave (Zoomed In)}
+  \end{subfigure}
+  \caption{LC Circuit}
+\end{figure}
+
+For the LC circuit, the observed behavior is different from the theoretically predicted one. This is because we 
+can never make pure LC circuit, as there will always be some resistance in the circuit which will cause damping.
 
 \subsection*{C. AC Sine Wave}
 
@@ -178,20 +196,6 @@ of the overtones associated to the natural frequency of a string on a violin, a 
     \centering
     \includegraphics[width=.9\linewidth]{../data/20211116_104711-mod.jpg}
     \caption{LR Circuit with Square Wave}
-  \end{subfigure}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \begin{subfigure}{.5\textwidth}
-    \centering
-    \includegraphics[width=.9\linewidth]{../data/20211116_110612-mod.jpg}
-    \caption{LC Circuit with Square Wave}
-  \end{subfigure}%
-  \begin{subfigure}{.5\textwidth}
-    \centering
-    \includegraphics[width=.9\linewidth]{../data/20211116_110834-mod.jpg}
-    \caption{LC Circuit with Square Wave (Zoomed In)}
   \end{subfigure}
 \end{figure}
 
