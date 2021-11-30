@@ -31,32 +31,32 @@
 \begin{center}
 	\section*{Abstract}
 \end{center}
-The aim of this experiment is  to study the behavior of different  circuit elements like 
-Resistor, Capacitor and Inductor in DC and AC circuits. We observed that capacitor opposes
-change in charge, while Inductor opposes in the current. As a result Capacitor in DC circuit is an open
-circuit while Inductor in DC circuit is a short circuit. In this report we present 
+The aim of this experiment is  to study the behavior of different circuit elements, like 
+Resistors, Capacitors and Inductors in DC and AC circuits. We observed that a capacitor opposes
+increase in charge accumulation, while an Inductor opposes changes in the current passing through it. As a result, a Capacitor in a DC circuit is an open
+circuit, while an Inductor in a DC circuit is a short circuit. In this report we present 
 these behaviors with the help of Oscilloscope measurements.
 
 \section{Introduction}
 
 \subsection*{A. Background Theory}
-In RC circuit, the voltage of the capacitor is given by $V_0 = \frac{Q_0}{C} \ \text{, and as we know  } I_0 = \frac{V_R}{R} \implies V_R = V_0e^{-\frac{t}{\tau}}\ \text{, where } \tau = RC$. This is also 
-the fitting equation for this case. Here total Voltage time is independent variable, and $V_R$ across the resistor is dependent variable. The capacitance (C) and the the resistance (R) are 
+In a RC circuit, the voltage of the capacitor is given by $V_0 = \frac{Q_0}{C} \ \text{, and as we know  } I_0 = \frac{V_R}{R} \implies V_R = V_0e^{-\frac{t}{\tau}}\ \text{, where } \tau = RC$. This is also 
+the fitting equation for this case. Here the measured time is our independent variable, while $V_R$ across the resistor is our dependent variable. The capacitance (C) and the the resistance (R) are 
 auxiliary parameters.
 
-In LR circuit, we have $I_R(t) = I_0(1-e^{\frac{t}{L/R}}) \implies V_R =  V_0(1-e^{\frac{t}{L/R}})$, where $I_0  = \frac{V_0}{R}$. Our fitting equation is the same, and again time is our 
+In a LR circuit, we have $I_R(t) = I_0(1-e^{\frac{t}{L/R}}) \implies V_R =  V_0(1-e^{\frac{t}{L/R}})$, where $I_0  = \frac{V_0}{R}$. Our fitting equation is the same, and again time is our 
 independent variable, and voltage across the Resistor $V_R$, is the dependent variable. $L$ and $R$ are auxiliary parameters.
 
-In an LCR circuit, the total impedance $Z$ is defined as $Z = \sqrt{(\omega L - \frac{1}{\omega C})^2 + R^2}$. $Z$ can be found by measuring 
-total Voltage $V$, compared to voltage $V_R = RI \implies Z = \frac{V}{V_R}R$.
+In a LCR circuit, the total impedance $Z$ is defined as $Z = \sqrt{(\omega L - \frac{1}{\omega C})^2 + R^2}$. $Z$ can be found by measuring 
+the total Voltage $V$, compared to the voltage $V_R = RI \implies Z = \frac{V}{V_R}R$.
 
-It is clear from the fitting equation for RC circuit that we would observe exponential decay for the Voltage across the resistor, as can be seen in Figure \ref{Combined_RC_B}. And in case of LR, the relationship is reversed, and we observe exponential increase 
-in voltage across the Resistor as seen in Figure \ref{Combined_LR_W}.
+It is clear from the fitting equation for the RC circuit that we would observe exponential decay for the Voltage across the resistor, as can be seen in Figure \ref{Combined_RC_B}. In the case of the LR circuit, the relationship is reversed, and we observe exponential increase 
+in voltage across the Resistor, as seen in Figure \ref{Combined_LR_W}.
 
 \subsection*{B. Materials and Methods}
 
-In this experiment we used various circuit elements namely Resistors, Capacitors, and Inductor, in the setups provides 
-in the lab manual \cite{lab-manual-ex7}. The measurements were made by connecting to the appropriate channels of Oscilloscope.
+In this experiment we used various circuit elements namely Resistors, Capacitors, and Inductors, in the setups provided
+in the lab manual \cite{lab-manual-ex7}. The measurements were made by connecting the two wires of the channels of the Oscilloscope to each side of the circuit element(s) for which we wanted to measure voltage across over time.
 
 We followed the steps provided in the lab manual \cite{lab-manual-ex7} for this 
 experiment. We also made adjustments based on TA's suggestion to the circuits as the 
@@ -72,7 +72,7 @@ AC circuits in the manual were applicable to old Oscilloscopes.
 \end{figure}
 $$\tau\ (measured) = 0.4\ s, \ \ RC = 0.47\ s$$
 
-The observed or measured value of time constant matches closely with the theoretical value $RC$. 
+The estimated value of the time constant, estimated from our measurements, matches the theoretical value $RC$ closely. 
 
 \subsection*{B. DC Square Wave}
 
@@ -84,7 +84,7 @@ The observed or measured value of time constant matches closely with the theoret
 $$\tau\ (measured) = 8 \times 10^{-5}\ s$$
 $$RC = 1.1 \times 10^{-5}\ s$$
 
-The observed or measured value of time constant matches with the theoretical value $RC$ in order of magnitude. 
+The estimated value of the time constant, estimated from our measurements, matches the theoretical value $RC$ in order of magnitude. 
 
 \begin{figure}[H]
   \centerline{\includegraphics[width=0.9\linewidth]{../Simulated Curves/LR_W-mod.png}}
@@ -94,7 +94,7 @@ The observed or measured value of time constant matches with the theoretical val
 $$\tau\ (measured) = 5.0 \times 10^{-5}\ s$$
 $$L/R = 9.2 \times 10^{-5}\ s$$
 
-The observed or measured value of time constant matches with the theoretical value $L/R$ in order of magnitude. 
+The estimated value of the time constant, estimated from our measurements, matches the theoretical value $L/R$ in order of magnitude. 
 
 \subsection*{C. AC Sine Wave}
 
@@ -121,26 +121,26 @@ The observed or measured value of time constant matches with the theoretical val
 
 \section{Uncertainty}
 
-For the purpose of this experiment we estimated the uncertainty in $V_R$
-as the thickness of the voltage line plotted on the Oscilloscope for channel 2, which 
-measures the voltage across the Resistor. In case of DC circuit, with RC we observe that 
+For the purpose of this experiment, we estimated the uncertainty in $V_R$
+as the thickness of the voltage line plotted on the Oscilloscope for channel 2. This channel 
+measures the voltage across the Resistor. In case of the DC circuit, with the RC configuration, we observe that 
 $\Delta V_R = \frac{1}{4} \times \text{Voltage Division} = .25 \times 500\ mV = 125\ mV$. 
-And for DC Square Wave, it is $2\ V$. Similarly for LR Square Wave case, $\Delta V_R = 1\ V$.
-Overall for the experiment we  can assume the uncertainty in the measurement of $V_R$ to be 
-of the order of 1 $V$.
+And for the DC Square Wave, it is $2\ V$. Similarly for the LR Square Wave case, $\Delta V_R = 1\ V$.
+Overall, for the experiment we can assume the uncertainty in the measurement of $V_R$ to be 
+in order of magnitude 1 $V$.
 
 \section{Discussion}
 
-In RC circuit, the accuracy of the measurement of $V_R$ in DC case is given by $\frac{|1.4/e - 1.|}{1.4/e} \times 100 = 35 \%$. 
-And the precision of measurement of $V_R$ is  given by by $\frac{0.125}{0.7} \times 100 = 17 \%$. 
-The accuracy value being  large can be attributed to  the  instrument.
+In the RC circuit, the accuracy of the measurement of $V_R$ in the DC case, is given by $\frac{|1.4/e - 1.|}{1.4/e} \times 100 = 35 \%$. 
+And the precision of measurement of $V_R$ is given by $\frac{0.125}{0.7} \times 100 = 17 \%$. 
+The accuracy value being large can be attributed to instrument error/inaccuracy.
 
-In LR circuit, the accuracy of $V_R$ in DC case is given by $\frac{|12.64 - 10.0|}{12.64} \times 100 = 20 \%$. 
-And the precision of measurement of $V_R$ is  given by by $\frac{1}{10} \times 100 = 10 \%$. 
+In the LR circuit, the accuracy of $V_R$ in the DC case is given by $\frac{|12.64 - 10.0|}{12.64} \times 100 = 20 \%$. 
+And the precision of measurement of $V_R$ is given by $\frac{1}{10} \times 100 = 10 \%$. 
 
-In the LCR circuit for lower frequencies the phase difference is negative, and as the frequency is 
-increased the phase gradually shifts to positive values. The resonance frequency can be estimated to be around 1 kHz. 
-And as per theory $\omega_r = 1/\sqrt{LC} = 1.4$ kHz.
+In the LCR circuit for lower frequencies, the phase difference is negative. As the frequency is
+increased, the phase gradually shifts to positive values. The resonance frequency can be estimated to be around 1 kHz. 
+Furthermore, in accordance with theory, $\omega_r = 1/\sqrt{LC} = 1.4$ kHz.
 
 \pagebreak
 
@@ -191,8 +191,8 @@ And as per theory $\omega_r = 1/\sqrt{LC} = 1.4$ kHz.
 
 \subsection{Impedance and Phase Plots}
 
-The Python code for this exercise is divided into two files. statslab.py file contains utility methods
-which we will be frequently using in this course. lab\_7.py file contains the code which analyzes
+The Python code for this exercise is divided into two files. The statslab.py file contains utility methods
+which we will be frequently using in this course. The lab\_7.py file contains the code which analyzes
 the data.
 
 \subsubsection{statslab.py}
