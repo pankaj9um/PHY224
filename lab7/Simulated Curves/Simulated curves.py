@@ -52,6 +52,7 @@ ax.set_title("Exponential Decay of the Potensial Over the Resistor"+
 ax.plot(t_RC_B,V_RC_B,c='r', ls='', marker='.',lw=1)
 ax.set_xlabel("Time in seconds (s)")
 ax.set_ylabel("Voltage (V)")
+ax.set_ylim(-1, 4)
 ax.figure.savefig("Exponential Decay of the Potential Over the Resistor"+
                   "For an RC Curcuit with a Battery"+".png")  
 
@@ -68,6 +69,7 @@ ax.set_title("Exponential Decay of the Potensial Over the Resistor"+
 ax.plot(t_RC_W,V_RC_W,c='r', ls='', marker='.',lw=1)
 ax.set_xlabel("Time in seconds (s)")
 ax.set_ylabel("Voltage (V)")
+ax.set_ylim(-20, 20)
 ax.figure.savefig("Exponential Decay of the Potential Over the Resistor"+
                   "For an RC Curcuit with the Wave Generator"+".png")  
 
@@ -85,6 +87,7 @@ ax.set_title("Exponential Increase of the Potential Over the Resistor"+
 ax.plot(t_LR_W,10-V_LR_W,c='r', ls='', marker='.',lw=1)
 ax.set_xlabel("Time in seconds (s)")
 ax.set_ylabel("Voltage (V)")
+ax.set_ylim(-17, 17)
 ax.figure.savefig("Exponential Increase of the Potential Over the Resistor"+
                   "For an LR Curcuit with the Wave Generator"+".png") 
 
