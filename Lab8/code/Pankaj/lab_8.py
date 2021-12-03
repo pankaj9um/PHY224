@@ -47,7 +47,8 @@ def compute_B_e():
     
     B_e = -intercept
     B_e_error = std_err
-    print("External Magnetic Field B_e = %.6f \u00B1 %.6f Tesla" % (B_e, B_e_error))
+    print("External Magnetic Field B_e = %.6f \u00B1 %.6f Tesla" 
+          % (B_e, B_e_error))
     
     # plot the predicted and measured data
     fig = plt.figure(figsize=(16,10))
