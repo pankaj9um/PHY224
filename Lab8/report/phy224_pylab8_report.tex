@@ -52,8 +52,8 @@ By measuring the potential, the magnetic field and the radius of the orbit, we c
 
 \subsection*{B. Materials and Methods}
 
-The main apparatus' for the experiment are the two Helmholtz coils, which produce the magnetic field that bend the electron beam, 
-the vacuum tube, filled by a low density gas for minimal electron resistance, though which gives some rare collitions which emit
+The main apparatus for the experiment are the two Helmholtz coils, which produce the magnetic field that bend the electron beam, 
+the vacuum tube, filled by a low density gas for minimal electron resistance, though which gives some rare collisions which emit
 light for visual inspection of the electron trajectory, and lastly the electron gun for creating the beam of free electrons with velocity v.
 
 We followed the instructions given in the lab manual \cite{lab-manual-ex8}, and also the instructions given to us by the TA.
@@ -61,7 +61,7 @@ We followed the instructions given in the lab manual \cite{lab-manual-ex8}, and 
 \section{Results}
 
 To compute the external magnetic field, we use $\frac{1}{r} = \sqrt{\frac{e}{2m}}\frac{1}{\sqrt{V}}(B_c + B_e) \implies B_c = (constant)\frac{1}{r} - B_e$. 
-The constant factor is due to measurements done with constant voltage. The intercept of the fitted line gives $B_e = 0.00001 \pm 0.00005$ Tesla.
+The constant factor is due to measurements done with constant voltage. The intercept of the fitted line gives $B_e = 0.000013 \pm 0.000001$ Tesla.
 
 \begin{figure}[H]
   \centering
@@ -76,14 +76,14 @@ The constant factor is due to measurements done with constant voltage. The inter
 
 To compute the charge to mass ratio, we use $\frac{1}{r} = \sqrt{\frac{e}{m}}k\frac{I-I_0}{\sqrt{V}}$. For this case we use the data
 obtained keeping current constant. The charge to mass ratio is give by $(\frac{slope}{k(I-I_0)})^2$. The charge to mass ratio
-obtained in our case is $-(1.61 \pm 0.04) \times 10^{11}\ C/kg$.
+obtained in our case is $-(1.61 \pm 0.29) \times 10^{11}\ C/kg$.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\linewidth]{../code/Pankaj/Charge To Mass Ratio.png}   
   \begin{center}
     Fitting Equation $f(x) = ax$ \\
-    $a = 119.77$
+    $a = 194.61$
   \end{center}   
   \caption{Computation of e/m: $1/r$ vs $1/\sqrt{V}$}
   \label{e_m}
@@ -91,10 +91,10 @@ obtained in our case is $-(1.61 \pm 0.04) \times 10^{11}\ C/kg$.
 
 \section{Uncertainty}
 
-For the calculation of $B_e$, the uncertainty is given by the fitting function. Hence $\Delta B_e = \Delta (y-intercept) = \pm 0.00005$ Tesla.
+For the calculation of $B_e$, the uncertainty is given by the fitting function. Hence $\Delta B_e = \Delta (y-intercept) = \pm 0.000001$ Tesla.
 
 For the computation of the charge to mass ratio, we have $\frac{e}{m} = (\frac{slope}{k(I-I_0)})^2 \implies 
-\Delta (\frac{e}{m}) = 2 (slope) \frac{\Delta (slope)}{(k(I-I_0))^2}$. The uncertainty is then $\Delta (\frac{e}{m}) = \pm 0.04 \times 10^{11}\ C/kg$.
+\Delta (\frac{e}{m}) = 2 (slope) \frac{\Delta (slope)}{(k(I-I_0))^2}$. The uncertainty is then $\Delta (\frac{e}{m}) = \pm 0.29 \times 10^{11}\ C/kg$.
 
 \section{Discussion}
 
@@ -139,7 +139,6 @@ distort the magnetic field within the vacuum chamber. We know this because we ca
 on the placement of the ferromagnetic material in relation to the chamber. Depending on the size and amount of ferromagnetic material we brought close to the vacuum chamber, 
 the magnetic field and thus our measurements ranged from being negligibly affected, to being significantly affected. 
 
-
 \pagebreak
 
 \appendix
@@ -164,22 +163,10 @@ the magnetic field and thus our measurements ranged from being negligibly affect
 
 \subsection{Python Code}
 
-The Python code for this exercise is divided into two files. statslab.py file contains utility methods
-which we will be frequently using in this course. lab\_8.py file contains the code which analyzes
-the data.
-
-\subsubsection{statslab.py}
-\noindent\rule{\textwidth}{1pt}
-\verbatiminput{../code/Pankaj/statslab.py}
-\noindent\rule{\textwidth}{1pt}
-
-\pagebreak
-
 \subsubsection{lab\_8.py}
 \noindent\rule{\textwidth}{1pt}
 \verbatiminput{../code/Pankaj/lab_8.py}
 \noindent\rule{\textwidth}{1pt}
-
 
 \pagebreak
 
